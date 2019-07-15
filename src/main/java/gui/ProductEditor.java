@@ -10,12 +10,12 @@ package gui;
  *
  * @author vilra830
  */
-public class _productEditor extends javax.swing.JDialog {
+public class ProductEditor extends javax.swing.JDialog {
 
     /**
      * Creates new form productEditor
      */
-    public _productEditor(java.awt.Frame parent, boolean modal) {
+    public ProductEditor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -150,7 +150,7 @@ public class _productEditor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if ()
+//        if ()
     }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
@@ -170,14 +170,18 @@ public class _productEditor extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(_productEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(_productEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(_productEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(_productEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProductEditor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -186,7 +190,7 @@ public class _productEditor extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                _productEditor dialog = new _productEditor(new javax.swing.JFrame(), true);
+                ProductEditor dialog = new ProductEditor(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
