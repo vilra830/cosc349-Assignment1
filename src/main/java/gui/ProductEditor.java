@@ -1,5 +1,7 @@
 package gui;
 
+import java.math.BigDecimal;
+import domain.Product;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +20,11 @@ public class ProductEditor extends javax.swing.JDialog {
     public ProductEditor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        categoryField.setEditable(true);
+        
+        
+        
+        
     }
 
     /**
@@ -49,11 +56,13 @@ public class ProductEditor extends javax.swing.JDialog {
 
         txtID.setText("ID:");
 
-        idField.setText("jTextField1");
+        idField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFieldActionPerformed(evt);
+            }
+        });
 
         name.setText("Name");
-
-        nameField.setText("jTextField2");
 
         jLabel3.setText("Description:");
 
@@ -63,15 +72,9 @@ public class ProductEditor extends javax.swing.JDialog {
 
         category.setText("Category");
 
-        categoryField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         price.setText("Price");
 
-        priceField.setText("jTextField3");
-
         stockQuantity.setText("Stock Quantity");
-
-        stockQuantityField.setText("jTextField4");
 
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +84,11 @@ public class ProductEditor extends javax.swing.JDialog {
         });
 
         cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,8 +158,42 @@ public class ProductEditor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-//        if ()
+       if (evt.getSource() == saveButton){
+           String productName = nameField.getText();
+           String productID = idField.getText();
+           String productDescription = descriptionField.getText();
+           String productCategory = (String) categoryField.getSelectedItem();
+           BigDecimal productPrice = new BigDecimal(priceField.getText());
+           BigDecimal productQuantity = new BigDecimal(stockQuantityField.getText());
+             
+           System.out.println(productName + " " + productID );
+           System.out.println(productDescription + " " + productCategory);
+           System.out.println(productPrice + " " + productQuantity);
+          
+           
+           Product product = new Product();
+           product.setProductID(productID);
+           product.setProductName(productName);
+           product.setProductDescription(productDescription);
+           product.setProductCategory(productCategory);
+           product.setStockQuantity(productQuantity);
+           product.setPriceList(productPrice);
+                 
+                  
+       }
+       
+       
     }//GEN-LAST:event_saveButtonActionPerformed
+
+ 
+
+    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFieldActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+      dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,4 +261,6 @@ public class ProductEditor extends javax.swing.JDialog {
     private javax.swing.JTextField stockQuantityField;
     private javax.swing.JLabel txtID;
     // End of variables declaration//GEN-END:variables
+
+    
 }
