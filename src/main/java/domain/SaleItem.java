@@ -16,6 +16,19 @@ import java.math.BigDecimal;
 public class SaleItem {
     private BigDecimal purchaseQuantity;
     private BigDecimal salePrice;
+    private Product product;
+    private Sale sale;
+
+    public SaleItem(BigDecimal purchaseQuantity, BigDecimal salePrice, Product product , Sale sale) {
+        this.purchaseQuantity = purchaseQuantity;
+        this.salePrice = salePrice;
+        this.product = product;
+        this.sale = sale;
+	sale.addItem(this);
+        
+    }
+
+    
 
     public SaleItem(BigDecimal purchaseQuantity, BigDecimal salePrice) {
         this.purchaseQuantity = purchaseQuantity;
@@ -34,14 +47,33 @@ public class SaleItem {
         this.purchaseQuantity = purchaseQuantity;
     }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setSale(Sale sale) {
+        this.sale = sale;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public Sale getSale() {
+        return sale;
+    }
+    
+    
+    
     public void setSalePrice(BigDecimal salePrice) {
         this.salePrice = salePrice;
     }
     
     
     public BigDecimal getItemTotal(){
-        return getSalePrice().multiply(purchaseQuantity);
+        return this.salePrice.multiply(this.purchaseQuantity);
     }
+    
     
     
     @Override

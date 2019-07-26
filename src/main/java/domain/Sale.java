@@ -73,7 +73,7 @@ public class Sale {
     
     public void addItem(SaleItem saleItem){
         
-        items.add(saleItem);
+        this.items.add(saleItem);
             
             
             
