@@ -29,8 +29,11 @@ public class Administration {
                 Sale sale = new Sale(12, date,"pending" );
 		
                 
-		SaleItem saleItem = new SaleItem(new BigDecimal("4") , new BigDecimal("10.50") , product , sale );
-                SaleItem saleItem1 = new SaleItem(new BigDecimal("3") , new BigDecimal("4.50"), product, sale);
+		SaleItem saleItem = new SaleItem(new BigDecimal("4") , new BigDecimal("10.50") );
+                SaleItem saleItem1 = new SaleItem(new BigDecimal("3") , new BigDecimal("4.50"));
+                
+                System.out.println(saleItem.getItemTotal());
+                System.out.println();
                 
 		ArrayList<SaleItem> saleList = new ArrayList<>();
 		SaleItem instance = new SaleItem(new BigDecimal("3"), new BigDecimal("6.50") , product ,  sale );
@@ -42,20 +45,26 @@ public class Administration {
                 
                 BigDecimal total = BigDecimal.ZERO;
 		for(SaleItem s : saleList){
-                    total.add(s.getItemTotal());
+                   total = total.add(s.getItemTotal());
+
 		}
 		
-		System.out.println(saleItem.getItemTotal());
 		System.out.println(total);
                 System.out.println(cust);
                 System.out.println(product);
                 System.out.println(sale);
-                System.out.println(instance);
+                System.out.println(instance.toString());
 
 	}
 }
 
     
+
+
+
+
+
+
 
 
 
