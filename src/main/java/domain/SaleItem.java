@@ -19,6 +19,11 @@ public class SaleItem {
     private Product product;
     private Sale sale;
 
+    public SaleItem() {
+    }
+
+    
+    
     public SaleItem(BigDecimal purchaseQuantity, BigDecimal salePrice, Product product , Sale sale) {
         this.purchaseQuantity = purchaseQuantity;
         this.salePrice = salePrice;

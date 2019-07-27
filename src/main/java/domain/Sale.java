@@ -27,6 +27,8 @@ public class Sale {
         this.date = date;
         this.status = status;
     }
+    
+    public Sale(){}
 
     public Integer getSaleID() {
         return saleID;
