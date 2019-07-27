@@ -20,7 +20,7 @@ public class Administration {
 	 */
 	public static void main(String[] args) {
             
-                Customer cust = new Customer(0123, "Summer" , "Johns" , "adfhj" , "summersj", "summer09@gmail.com" , "81 Saturn Street Dunedin City");
+                Customer cust = new Customer(231, "Summer" , "Johns" , "adfhj" , "summersj", "summer09@gmail.com" , "81 Saturn Street Dunedin City");
 
 		Product product = new Product("D1231","DVD",new BigDecimal("12.25"));
                 Product product1 = new Product("PC12","Personal Computer",new BigDecimal("624.75"));
@@ -59,6 +59,7 @@ public class Administration {
 }
 
     
+
 
 
 
