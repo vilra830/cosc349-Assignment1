@@ -1,5 +1,6 @@
 package gui;
 
+import dao.DAO;
 import java.math.BigDecimal;
 import domain.Product;
 /*
@@ -17,6 +18,10 @@ public class ProductEditor extends javax.swing.JDialog {
     /**
      * Creates new form productEditor
      */
+    
+        private DAO dao = new DAO();
+        Product product = new Product();
+
     public ProductEditor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -171,7 +176,7 @@ public class ProductEditor extends javax.swing.JDialog {
            System.out.println(productPrice + " " + productQuantity);
           
            
-           Product product = new Product();
+           
            product.setProductID(productID);
            product.setProductName(productName);
            product.setProductDescription(productDescription);
@@ -179,7 +184,8 @@ public class ProductEditor extends javax.swing.JDialog {
            product.setStockQuantity(productQuantity);
            product.setPriceList(productPrice);
                  
-                  
+           dao.saveProduct(this.product);
+           dispose();
        }
        
        

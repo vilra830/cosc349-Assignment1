@@ -24,6 +24,7 @@ public void saveProduct(Product product) {
 
 public Collection<Product> getProducts(){
     return productList;
+
 }
 
 public void deleteProduct(Product product){
@@ -31,5 +32,10 @@ public void deleteProduct(Product product){
     
 }
 }
+
+
+
+
+
 
 
