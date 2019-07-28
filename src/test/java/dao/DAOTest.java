@@ -26,6 +26,11 @@ public class DAOTest {
     private Product prodTwo;
     private Product prodThree;
     
+
+
+    
+    
+    
     public DAOTest() {
     }
     
@@ -55,22 +60,41 @@ public class DAOTest {
         // save the product using the DAO
     dao.saveProduct(prodThree);
 // ensure that the data store includes the product
-    assertTrue("Ensure that the product was saved",
-    dao.getProducts().contains(prodThree));
+    assertTrue("Ensure that the product was saved",dao.getProducts().contains(prodThree));
+    assertTrue("Ensure that the product was saved",dao.getCategories().contains(prodThree.getProductCategory()));
+
     }
     
-
+   // dao.saveProduct(prodThree.getProductCategory());
     @Test
     public void testGetProducts() {
-        
-        Collection<Product> products = dao.getProducts();
+    Collection<Product> products = dao.getProducts();
+
     // ensure the result includes the two saved products
     assertTrue("prodOne should exist", products.contains(prodOne));
     assertTrue("prodTwo should exist", products.contains(prodTwo));
     // ensure the result ONLY includes the two saved products
     assertEquals("Only 2 products in result", 2, products.size());
     }
+    
+    @Test
+    public void testGetCategories(){
+        
+    Collection<String> categoryList = dao.getCategories();
 
+        //ensure the result includes the two saved categories
+        
+       // assertTrue("Prod1's cat is cat1", categoryList.contains(prodOne.getProductCategory()), "cat1");
+
+        assertTrue("cat1 should exist", categoryList.contains(prodOne.getProductCategory()));
+        assertTrue("cat2 should exist", categoryList.contains(prodTwo.getProductCategory()));
+        
+       assertEquals("Only 2 categories in result", 2, categoryList.size());
+        
+       assertEquals("Prod2's cat is cat2", prodTwo.getProductCategory(), "cat2");
+        
+        System.out.println(prodTwo.getProductCategory().toString());
+    }
     @Test
     public void testDeleteProduct() {
         
@@ -90,6 +114,30 @@ public class DAOTest {
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
