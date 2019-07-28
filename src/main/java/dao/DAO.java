@@ -16,10 +16,12 @@ import java.util.Collection;
 public class DAO {
     
 private static Collection<Product> productList = new ArrayList<>();
+private static Collection<String> categoryList = new ArrayList<>();
 
 
 public void saveProduct(Product product) {
     productList.add(product);
+    categoryList.add(product.getProductCategory());
 }
 
 public Collection<Product> getProducts(){
@@ -27,11 +29,20 @@ public Collection<Product> getProducts(){
 
 }
 
+public Collection<String> getCategories(){
+    return categoryList;
+
+}
+
 public void deleteProduct(Product product){
     productList.remove(product);
     
 }
+
+
 }
+
+
 
 
 

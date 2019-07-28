@@ -44,12 +44,12 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="productAdminLabel" min="-2" pref="32" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Component id="addProduct" pref="47" max="32767" attributes="0"/>
+              <Component id="addProduct" linkSize="2" min="-2" pref="47" max="-2" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="viewProduct" min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="viewProduct" linkSize="2" min="-2" pref="49" max="-2" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="exitButton" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+              <Component id="exitButton" linkSize="2" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,6 +72,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Products"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewProductActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exitButton">
       <Properties>

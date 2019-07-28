@@ -45,6 +45,11 @@ public class ProductAdministration extends javax.swing.JFrame {
         });
 
         viewProduct.setText("View Products");
+        viewProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewProductActionPerformed(evt);
+            }
+        });
 
         exitButton.setText("EXIT");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,13 +80,15 @@ public class ProductAdministration extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(productAdminLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(addProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(viewProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {addProduct, exitButton, viewProduct});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,6 +102,12 @@ public class ProductAdministration extends javax.swing.JFrame {
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }//GEN-LAST:event_addProductActionPerformed
+
+    private void viewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductActionPerformed
+        ProductReport productReport = new ProductReport(this, true);
+        productReport.setLocationRelativeTo(this);
+        productReport.setVisible(true);
+    }//GEN-LAST:event_viewProductActionPerformed
 
     /**
      * @param args the command line arguments
