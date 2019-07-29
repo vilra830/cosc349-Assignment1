@@ -1,0 +1,57 @@
+@startuml
+
+	skinparam {
+		Style strictuml
+	}
+	 
+	title View All Products
+	 
+	actor User as user
+	participant "Administration" as main <<main>>
+	main++
+	
+    create "MainMenu" as menu <<frame>>
+    main -> menu : construct
+    
+    main -> menu: setVisible(true)
+    menu++
+    
+    user -> menu: clicks View Products
+    
+    create "ProductReport" as dialog <<dialog>>
+  
+    
+    menu -> dialog : construct
+    dialog++
+
+   'creates a Data Access Object
+   create "ProductListDAO" as dao <<DAO>>
+   dialog -> dao : construct
+   
+   dialog -> dao: getProducts()
+   dao++
+   return products
+   
+   'creates a SimpleListModel to help 
+   create "SimpleListModel" as helper <<model>>
+   dialog -> helper : construct
+   
+   dialog-> helper : updateItems(products)
+   
+   
+   dialog -> dialog : productList.setModel(model)
+   note over dialog: Products now visible
+
+   
+   
+   user -> dialog : Clicks Close Button
+   dialog -> dialog : dispose()
+   destroy dialog
+   
+   
+   
+
+
+    
+	@enduml
+

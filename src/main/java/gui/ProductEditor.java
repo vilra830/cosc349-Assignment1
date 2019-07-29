@@ -28,10 +28,10 @@ public class ProductEditor extends javax.swing.JDialog {
     public ProductEditor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        categoryField.setEditable(true);
+        categoryBox.setEditable(true);
         
         helper.updateItems(dao.getCategories());
-        categoryField.setModel(helper);
+        categoryBox.setModel(helper);
         
         
     }
@@ -53,7 +53,7 @@ public class ProductEditor extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         descriptionField = new javax.swing.JTextArea();
         category = new javax.swing.JLabel();
-        categoryField = new javax.swing.JComboBox<>();
+        categoryBox = new javax.swing.JComboBox<>();
         price = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
         stockQuantity = new javax.swing.JLabel();
@@ -121,7 +121,7 @@ public class ProductEditor extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameField)
                             .addComponent(jScrollPane1)
-                            .addComponent(categoryField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(categoryBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(priceField)
                             .addComponent(stockQuantityField)
                             .addComponent(idField)
@@ -154,7 +154,7 @@ public class ProductEditor extends javax.swing.JDialog {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoryBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(category))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -179,7 +179,7 @@ public class ProductEditor extends javax.swing.JDialog {
            String productName = nameField.getText();
            String productID = idField.getText();
            String productDescription = descriptionField.getText();
-           String productCategory = (String) categoryField.getSelectedItem();
+           String productCategory = (String) categoryBox.getSelectedItem();
            BigDecimal productPrice = new BigDecimal(priceField.getText());
            BigDecimal productQuantity = new BigDecimal(stockQuantityField.getText());
              
@@ -265,7 +265,7 @@ public class ProductEditor extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel category;
-    private javax.swing.JComboBox<String> categoryField;
+    private javax.swing.JComboBox<String> categoryBox;
     private javax.swing.JTextArea descriptionField;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel1;
