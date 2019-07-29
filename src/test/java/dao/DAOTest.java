@@ -93,7 +93,6 @@ public class DAOTest {
         
        assertEquals("Prod2's cat is cat2", prodTwo.getProductCategory(), "cat2");
         
-        System.out.println(prodTwo.getProductCategory().toString());
     }
     @Test
     public void testDeleteProduct() {
@@ -114,6 +113,7 @@ public class DAOTest {
 }
 
 }
+
 
 
 
