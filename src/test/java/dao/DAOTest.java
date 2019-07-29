@@ -84,7 +84,7 @@ public class DAOTest {
 
         //ensure the result includes the two saved categories
         
-       // assertTrue("Prod1's cat is cat1", categoryList.contains(prodOne.getProductCategory()), "cat1");
+        assertTrue("Prod1's cat is cat1", categoryList.contains("cat1"));
 
         assertTrue("cat1 should exist", categoryList.contains(prodOne.getProductCategory()));
         assertTrue("cat2 should exist", categoryList.contains(prodTwo.getProductCategory()));
@@ -114,6 +114,7 @@ public class DAOTest {
 }
 
 }
+
 
 
 
