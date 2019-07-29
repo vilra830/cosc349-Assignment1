@@ -6,8 +6,9 @@
 package gui;
 
 /**
- *
- * @author villa
+ *A gui class that represents the main menu of product administration. It allows
+ * user to select the feature they want to use. 
+ * @author Rhea Villafuerte
  */
 public class ProductAdministration extends javax.swing.JFrame {
 

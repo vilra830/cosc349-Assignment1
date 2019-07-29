@@ -8,9 +8,9 @@ package gui;
 import dao.DAO;
 import helpers.SimpleListModel;
 
-/**
- *
- * @author villa
+/** A GUI class that allows users to view the product details that have
+ * been entered into the system.
+ * @author Rhea VIllafuerte
  */
 public class ProductReport extends javax.swing.JDialog {
 
