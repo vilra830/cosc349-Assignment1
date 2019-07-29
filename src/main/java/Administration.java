@@ -23,12 +23,14 @@ public class Administration {
                 ProductAdministration mainMenu = new ProductAdministration();
                 mainMenu.setLocationRelativeTo(null);
                 mainMenu.setVisible(true);
+                
 
 
 	}
 }
 
     
+
 
 
 
