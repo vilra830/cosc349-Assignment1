@@ -191,12 +191,7 @@ public class ProductEditor extends javax.swing.JDialog {
            String productCategory = (String) categoryBox.getSelectedItem();
            BigDecimal productPrice = new BigDecimal(priceField.getText());
            BigDecimal productQuantity = new BigDecimal(stockQuantityField.getText());
-             
-           System.out.println(productName + " " + productID );
-           System.out.println(productDescription + " " + productCategory);
-           System.out.println(productPrice + " " + productQuantity);
-          
-           
+
            
            product.setProductID(productID);
            product.setProductName(productName);
