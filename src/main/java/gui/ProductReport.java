@@ -7,6 +7,8 @@ package gui;
 
 import dao.DAO;
 import helpers.SimpleListModel;
+import domain.Product;
+import javax.swing.JOptionPane;
 
 /** A GUI class that allows users to view the product details that have
  * been entered into the system.
@@ -45,11 +47,6 @@ public class ProductReport extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        productList.setModel(new javax.swing.AbstractListModel<Product>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(productList);
 
         editButton.setText("Edit");
@@ -104,13 +101,13 @@ public class ProductReport extends javax.swing.JDialog {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
                     .addComponent(deleteButton)
                     .addComponent(closeButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {closeButton, deleteButton, editButton});
@@ -127,7 +124,16 @@ public class ProductReport extends javax.swing.JDialog {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-       
+       if(productList.isSelectionEmpty() == false) {
+           int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete?");
+           if(result == JOptionPane.YES_OPTION){
+               Product product =  (Product) productList.getSelectedValue();
+               dao.deleteProduct(product);
+               model.updateItems(dao.getProducts());
+               productList.setModel(model);
+           }
+               
+       }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
