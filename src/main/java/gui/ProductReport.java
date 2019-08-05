@@ -90,6 +90,11 @@ public class ProductReport extends javax.swing.JDialog {
         });
 
         searchButton.setText("SEARCH");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Filter Category:");
 
@@ -182,6 +187,15 @@ public class ProductReport extends javax.swing.JDialog {
     private void filterCategoryBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterCategoryBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_filterCategoryBoxActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String searchID = searchField.getText();
+        
+        model.updateItems(dao.searchProduct(searchID));
+        productList.setModel(model);
+        
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
