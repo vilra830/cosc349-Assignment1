@@ -6,8 +6,8 @@
 package dao;
 
 import domain.Product;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  *
@@ -15,16 +15,15 @@ import java.util.Collection;
  */
 public class DAO {
     
-private static Collection<Product> productList = new ArrayList<>();
-private static Collection<String> categoryList = new ArrayList<>();
+private static Collection<Product> productList = new HashSet<>();
+private static Collection<String> categoryList = new HashSet<>();
 
 
 public void saveProduct(Product product) {
     productList.add(product);
-    if(!categoryList.contains(product.getProductCategory())){
-        categoryList.add(product.getProductCategory());
+   categoryList.add(product.getProductCategory());
     
-    }
+    
             
 }
 
@@ -46,6 +45,7 @@ public void deleteProduct(Product product){
 
 
 }
+
 
 
 
