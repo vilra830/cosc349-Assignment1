@@ -45,10 +45,10 @@ public class ProductReport extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        productList.setModel(new javax.swing.AbstractListModel<String>() {
+        productList.setModel(new javax.swing.AbstractListModel<Product>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(productList);
 
@@ -60,6 +60,11 @@ public class ProductReport extends javax.swing.JDialog {
         });
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +126,10 @@ public class ProductReport extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+       
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,7 +179,7 @@ public class ProductReport extends javax.swing.JDialog {
     private javax.swing.JButton editButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> productList;
+    private javax.swing.JList<Product> productList;
     // End of variables declaration//GEN-END:variables
 }
 
