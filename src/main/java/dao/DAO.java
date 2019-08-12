@@ -5,6 +5,8 @@
  */
 package dao;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import domain.Product;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,12 +22,14 @@ public class DAO {
 private static Collection<Product> productList = new HashSet<>();
 private static Collection<String> categoryList = new HashSet<>();
 private static Map<String, Product> productIDList = new HashMap<>();
+private static Multimap<String,Product> categories = HashMultimap.create();
 
 
 public void saveProduct(Product product) {
     productList.add(product);
    categoryList.add(product.getProductCategory());
    productIDList.put(product.getProductID(), product);
+   categories.put(product.getProductCategory(), product);
     
     
             
@@ -57,7 +61,24 @@ public Product searchProduct(String productID){
     
 }
 
+
+
+public Collection<Product> filterCategory(String category){
+    if(!categories.containsKey(category)){
+        return null;
+    } else {
+        return categories.get(category);
+        
+    }
+    
 }
+
+}
+
+
+
+
+
 
 
 
