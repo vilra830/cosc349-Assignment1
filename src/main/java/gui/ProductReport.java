@@ -25,8 +25,12 @@ public class ProductReport extends javax.swing.JDialog {
     public ProductReport(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        model.updateItems(dao.getProducts());
-        productList.setModel(model);
+
+        filterCategoryBox.setEditable(true);
+
+        model.updateItems(dao.getCategories());
+        filterCategoryBox.setModel(model);
+        
     }
 
     /**
@@ -80,9 +84,12 @@ public class ProductReport extends javax.swing.JDialog {
 
         jLabel1.setText("         PRODUCT REPORT");
 
-        searchField.setText("jTextField1");
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
 
-        filterCategoryBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         filterCategoryBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterCategoryBoxActionPerformed(evt);
@@ -185,17 +192,22 @@ public class ProductReport extends javax.swing.JDialog {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void filterCategoryBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterCategoryBoxActionPerformed
-        // TODO add your handling code here:
+       String category = (String) filterCategoryBox.getSelectedItem();
+        model.updateItems(dao.filterCategory(category));
+        productList.setModel(model);
     }//GEN-LAST:event_filterCategoryBoxActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         String searchID = searchField.getText();
-        
         model.updateItems(dao.searchProduct(searchID));
         productList.setModel(model);
         
         
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
 
     /**
      * @param args the command line arguments
