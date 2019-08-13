@@ -26,7 +26,7 @@ public class ProductReport extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        filterCategoryBox.setEditable(true);
+       // filterCategoryBox.setEditable(true);
 
         model.updateItems(dao.getCategories());
         filterCategoryBox.setModel(model);
