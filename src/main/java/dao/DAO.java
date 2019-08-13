@@ -26,7 +26,7 @@ private static Multimap<String,Product> categories = HashMultimap.create();
 
 
 public void saveProduct(Product product) {
-    productList.add(product);
+   productList.add(product);
    categoryList.add(product.getProductCategory());
    productIDList.put(product.getProductID(), product);
    categories.put(product.getProductCategory(), product);
@@ -48,6 +48,12 @@ public Collection<String> getCategories(){
 
 public void deleteProduct(Product product){
     productList.remove(product);
+    categoryList.remove(product.getProductCategory());
+    productIDList.remove(product.getProductID());
+    categories.remove(product.getProductCategory(), product);
+    
+
+    
     
 }
 
@@ -64,16 +70,18 @@ public Product searchProduct(String productID){
 
 
 public Collection<Product> filterCategory(String category){
-    if(!categories.containsKey(category)){
-        return null;
-    } else {
+  
         return categories.get(category);
         
-    }
+    
     
 }
 
 }
+
+
+
+
 
 
 
