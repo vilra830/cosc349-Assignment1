@@ -109,47 +109,37 @@ public class DAOTest {
        assertFalse("Ensure that the product does not exist",dao.getProducts().contains(prodOne));
     
     
+   }
     
-}
+     @Test
+    public void testSearchProduct() {
+        
+        Product searchedProduct =  dao.searchProduct("2");
+        
+        assertEquals(prodTwo, searchedProduct);
+        
+        Product searchedProduct1 =  dao.searchProduct("5");
+        
+        assertEquals(null, searchedProduct1);
+        
+        
+        
+        
+        
+    }
+    
+     @Test
+    public void testFilterCategory() {
+        
+        Collection<Product> filteredProducts =  dao.filterCategory("cat2");
+        
+        assertTrue("prodTwo should be in list", filteredProducts.contains(prodTwo));
+   
+        
+    }
+    
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
