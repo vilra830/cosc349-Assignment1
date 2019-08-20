@@ -17,17 +17,17 @@ import java.util.Map;
  *
  * @author villa
  */
-public class DAO {
+public class DAO implements DAOInterface {
     
-private static Collection<Product> productList = new HashSet<>();
-private static Collection<String> categoryList = new HashSet<>();
+//private static Collection<String> categoryList = new HashSet<>();
 private static Map<String, Product> productIDList = new HashMap<>();
 private static Multimap<String,Product> categories = HashMultimap.create();
 
 
-public void saveProduct(Product product) {
-   productList.add(product);
-   categoryList.add(product.getProductCategory());
+    @Override
+    public void saveProduct(Product product) {
+   //productList.add(product);
+   //categoryList.add(product.getProductCategory());
    productIDList.put(product.getProductID(), product);
    categories.put(product.getProductCategory(), product);
     
@@ -35,20 +35,23 @@ public void saveProduct(Product product) {
             
 }
 
-public Collection<Product> getProducts(){
-    return productList;
+    @Override
+    public Collection<Product> getProducts(){
+    return productIDList.values();
 
 }
 
-public Collection<String> getCategories(){
+    @Override
+    public Collection<String> getCategories(){
     
-    return categoryList;
+    return categories.keySet();
 
 }
 
-public void deleteProduct(Product product){
-    productList.remove(product);
-    categoryList.remove(product.getProductCategory());
+    @Override
+    public void deleteProduct(Product product){
+    //productList.remove(product);
+    //categoryList.remove(product.getProductCategory());
     productIDList.remove(product.getProductID());
     categories.remove(product.getProductCategory(), product);
     
@@ -57,7 +60,8 @@ public void deleteProduct(Product product){
     
 }
 
-public Product searchProduct(String productID){
+    @Override
+    public Product searchProduct(String productID){
     if(!productIDList.containsKey(productID)){
         return null;
     } else {
@@ -69,15 +73,18 @@ public Product searchProduct(String productID){
 
 
 
-public Collection<Product> filterCategory(String category){
-  
-        return categories.get(category);
+    @Override
+    public Collection<Product> filterCategory(String category){
+        Collection<Product> productList = categories.get(category);
+
+        return productList;
         
     
     
 }
 
 }
+
 
 
 
