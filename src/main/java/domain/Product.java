@@ -2,6 +2,10 @@ package domain;
 
 
 import java.math.BigDecimal;
+import net.sf.oval.constraint.Length;
+import net.sf.oval.constraint.NotBlank;
+import net.sf.oval.constraint.NotNegative;
+import net.sf.oval.constraint.NotNull;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,12 +18,35 @@ import java.math.BigDecimal;
  * @author vilra830
  */
 public class Product {
+    @NotNull(message = "ID must be provided.")
+    @NotBlank(message = "ID must be provided.")
+    @Length(min=2, max = 20 , message="ID must contain at least two characters.")
     private String productID;
+    @NotNull(message = "Name must be provided.")
+    @NotBlank(message = "Name must be provided.")
+    @Length(min=2, max=20, message="Name must contain at least two characters.")
     private String productName; 
+    @NotNull(message = "Description must be provided.")
+    @NotBlank(message = "Description must be provided.")
+    @Length(min=5, max=300, message="Description must contain at least five characters.")
     private String productDescription;
+    @NotNull(message = "Category must be provided.")
+    @NotBlank(message = "Category must be provided.")
+    @Length(min=3, max=50, message="Category must contain at least three characters.")
     private String productCategory;
+    @NotNull(message = "Price must be provided.")
+    @NotNegative(message = "Price must be zero or greater.")
+    @Length(max=7)
     private BigDecimal priceList;
+    @NotNull(message = "Quantity must be provided.")
+    @NotNegative(message = "Quantity must be zero or greater.")
+    @Length(max=7)
     private BigDecimal stockQuantity;
+    
+    
+    
+    
+    
     
     public Product(){}
 

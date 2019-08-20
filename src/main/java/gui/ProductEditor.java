@@ -2,9 +2,14 @@ package gui;
 
 import dao.DAO;
 import dao.ProductDBManager;
+//import dao.ProductDBManager;
 import java.math.BigDecimal;
 import domain.Product;
 import helpers.SimpleListModel;
+import javax.swing.JOptionPane;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
+import net.sf.oval.exception.ConstraintsViolatedException;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -126,18 +131,18 @@ public class ProductEditor extends javax.swing.JDialog {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addComponent(category)
-                .addGap(292, 292, 292))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(471, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
                 .addComponent(price)
-                .addGap(292, 292, 292))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(471, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(stockQuantity)
-                .addGap(292, 292, 292))
+                .addContainerGap(471, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,14 +183,16 @@ public class ProductEditor extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveButton)
                     .addComponent(cancelButton))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-       if (evt.getSource() == saveButton){
+      try {
+          
+          if (evt.getSource() == saveButton){
            String productName = nameField.getText();
            String productID = idField.getText();
            String productDescription = descriptionField.getText();
@@ -200,10 +207,30 @@ public class ProductEditor extends javax.swing.JDialog {
            product.setProductCategory(productCategory);
            product.setStockQuantity(productQuantity);
            product.setPriceList(productPrice);
+           
+           
+           new Validator().assertValid(product);
                  
            dao.saveProduct(this.product);
            dispose();
-       }
+           
+       } 
+      }catch (NumberFormatException nfe) {
+           JOptionPane.showMessageDialog(this,"You have entered a price or quantity that is not a valid number.","Input Error", JOptionPane.ERROR_MESSAGE);   
+               }catch (ConstraintsViolatedException ex) {
+// get the violated constraints from the exception
+ConstraintViolation[] violations = ex.getConstraintViolations();
+// create a nice error message for the user
+String msg = "Please fix the following input problems:";
+for (ConstraintViolation cv : violations) {
+msg += "\n •" + cv.getMessage();
+}
+// display the message to the user
+JOptionPane.showMessageDialog(this, msg, "Input Error",
+JOptionPane.ERROR_MESSAGE);
+}
+               
+               
        
        
     }//GEN-LAST:event_saveButtonActionPerformed
