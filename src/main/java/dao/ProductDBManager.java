@@ -57,7 +57,7 @@ public class ProductDBManager implements DAOInterface {
 
         stmt.executeUpdate();  // execute the statement
     }catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        //throw new RuntimeException(ex);
     }
         
       
@@ -119,7 +119,7 @@ public class ProductDBManager implements DAOInterface {
 
     @Override
     public Collection<String> getCategories() {
-        String sql = "select distic productCategory from Product order by productCategory";
+        String sql = "select distinct productCategory from Product order by productCategory";
 
     try (
         // get a connection to the database
@@ -159,6 +159,11 @@ public class ProductDBManager implements DAOInterface {
 
 
 }
+
+
+
+
+
 
 
 
