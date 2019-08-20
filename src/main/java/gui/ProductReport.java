@@ -6,6 +6,7 @@
 package gui;
 
 import dao.DAO;
+import dao.ProductDBManager;
 import helpers.SimpleListModel;
 import domain.Product;
 import javax.swing.JOptionPane;
@@ -19,7 +20,7 @@ public class ProductReport extends javax.swing.JDialog {
     /**
      * Creates new form ProductReport
      */
-    private DAO dao = new DAO();
+    private ProductDBManager dao = new ProductDBManager();
     private SimpleListModel model = new SimpleListModel();
     
     public ProductReport(java.awt.Frame parent, boolean modal) {

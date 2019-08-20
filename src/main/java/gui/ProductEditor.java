@@ -1,6 +1,7 @@
 package gui;
 
 import dao.DAO;
+import dao.ProductDBManager;
 import java.math.BigDecimal;
 import domain.Product;
 import helpers.SimpleListModel;
@@ -21,7 +22,7 @@ public class ProductEditor extends javax.swing.JDialog {
      * Creates new form productEditor
      */
     
-        private DAO dao = new DAO();
+    private ProductDBManager dao = new ProductDBManager();
         Product product = new Product();
         private SimpleListModel helper = new SimpleListModel();
 
