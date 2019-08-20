@@ -5,7 +5,6 @@
  */
 package dao;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +24,7 @@ public class DAOTest {
     private Product prodOne;
     private Product prodTwo;
     private Product prodThree;
-    
+    private Product prodFour;
 
 
     
@@ -39,11 +38,12 @@ public class DAOTest {
        this.prodOne = new Product("1", "name1", "cat1", "desc1",new BigDecimal("11.00"), new BigDecimal("22.00"));
        this.prodTwo = new Product("2", "name2", "cat2", "desc2",new BigDecimal("33.00"), new BigDecimal("44.00"));
        this.prodThree = new Product("3", "name3", "cat3", "desc3",new BigDecimal("55.00"), new BigDecimal("66.00"));
-       
+       this.prodFour = new Product("4", "name3", "cat2", "desc4",new BigDecimal("55.00"), new BigDecimal("66.00"));
         // save the products
 
         dao.saveProduct(prodOne);
         dao.saveProduct(prodTwo);
+        dao.saveProduct(prodFour);
     }
     
     @After
@@ -62,7 +62,7 @@ public class DAOTest {
 // ensure that the data store includes the product
     assertTrue("Ensure that the product was saved",dao.getProducts().contains(prodThree));
     assertTrue("Ensure that the product was saved",dao.getCategories().contains(prodThree.getProductCategory()));
-
+    
     }
     
    // dao.saveProduct(prodThree.getProductCategory());
@@ -73,8 +73,13 @@ public class DAOTest {
     // ensure the result includes the two saved products
     assertTrue("prodOne should exist", products.contains(prodOne));
     assertTrue("prodTwo should exist", products.contains(prodTwo));
+    assertTrue("prodFour should exist", products.contains(prodFour));
+        assertFalse("prodThree should not exist", products.contains(prodThree));
+
     // ensure the result ONLY includes the two saved products
-    assertEquals("Only 2 products in result", 2, products.size());
+    assertEquals("Only 3 products in result", 3, products.size());
+    
+    System.out.println(products.size());
     }
     
     @Test
@@ -108,19 +113,21 @@ public class DAOTest {
         // ensure that the product no longer exists
        assertFalse("Ensure that the product does not exist",dao.getProducts().contains(prodOne));
     
-    
+       assertNull("prodOne should no longer exist", dao.searchProduct("1"));
    }
     
      @Test
     public void testSearchProduct() {
         
+        Product searchedProduct1 =  dao.searchProduct("5");
+        
+        assertEquals(null, searchedProduct1);
+        
         Product searchedProduct =  dao.searchProduct("2");
         
         assertEquals(prodTwo, searchedProduct);
         
-        Product searchedProduct1 =  dao.searchProduct("5");
-        
-        assertEquals(null, searchedProduct1);
+      
         
         
         
@@ -133,13 +140,26 @@ public class DAOTest {
         
         Collection<Product> filteredProducts =  dao.filterCategory("cat2");
         
-        assertTrue("prodTwo should be in list", filteredProducts.contains(prodTwo));
+        assertTrue("prodTwo should be in the list", filteredProducts.contains(prodTwo));
+        assertTrue("prodFour should be in the list", filteredProducts.contains(prodFour));
+        assertFalse("prodOne should not be in the list", filteredProducts.contains(prodOne));
+
    
         
     }
     
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
