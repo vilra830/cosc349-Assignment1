@@ -109,14 +109,72 @@ public class ProductDBManager implements DAOInterface {
 
     @Override
     public void deleteProduct(Product product) {
+        String sql = "delete from product where productID = ?"; 
+        
+    try (
+        // get connection to database
+        Connection dbCon = DbConnection.getConnection(databaseURI);
+
+        // create the statement
+        PreparedStatement stmt = dbCon.prepareStatement(sql);
+    ) { 
+        
+        stmt.setString(1, product.getProductID());
+
+
+        stmt.executeUpdate();  // execute the statement
+    }catch (SQLException ex) {
+        //throw new RuntimeException(ex);
+    }
         
     }
 
     @Override
     public Collection<Product> filterCategory(String category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String sql = "select * from product where productCategory = ?"; 
+        
+    try (
+        // get connection to database
+        Connection dbCon = DbConnection.getConnection(databaseURI);
+
+        // create the statement
+        PreparedStatement stmt = dbCon.prepareStatement(sql);
+    ) { 
+        
+        stmt.setString(1, category);
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        ArrayList<Product> productList = new ArrayList<>();
+        
+        while(rs.next()) {
+            
+             String productID = rs.getString("productID");
+             String productName = rs.getString("productName"); 
+             String productDescription = rs.getString("productDescription");
+             String productCategory = rs.getString("productCategory");
+             BigDecimal priceList = rs.getBigDecimal("priceList");
+             BigDecimal stockQuantity = rs.getBigDecimal("stockQuantity");
+            
+           
+            Product product = new Product (productID , productName , productDescription , productCategory , priceList , stockQuantity); 
+            
+            productList.add(product);
+        } 
+            return productList;
+    } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+    
+    
+    
     }
 
+    
+    
+    
+    
     @Override
     public Collection<String> getCategories() {
         String sql = "select distinct productCategory from Product order by productCategory";
@@ -153,12 +211,50 @@ public class ProductDBManager implements DAOInterface {
     }
 
     @Override
-    public Product searchProduct(String productID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Product searchProduct(String id) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+     String sql = "select * from product where productID = ?"; 
+        
+    try (
+        // get connection to database
+        Connection dbCon = DbConnection.getConnection(databaseURI);
+
+        // create the statement
+        PreparedStatement stmt = dbCon.prepareStatement(sql);
+    ) { 
+        
+        stmt.setString(1, id);
+        
+        ResultSet rs = stmt.executeQuery();
+        
+        if(rs.next()) {
+            
+             String productID = rs.getString("productID");
+             String productName = rs.getString("productName"); 
+             String productDescription = rs.getString("productDescription");
+             String productCategory = rs.getString("productCategory");
+             BigDecimal priceList = rs.getBigDecimal("priceList");
+             BigDecimal stockQuantity = rs.getBigDecimal("stockQuantity");
+            
+           
+            return new Product (productID , productName , productDescription , productCategory , priceList , stockQuantity); 
+           
+        } else {
+            return null;
+        }
+            
+        } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+ 
     }
 
 
 }
+
+
+
 
 
 
