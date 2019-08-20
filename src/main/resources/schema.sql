@@ -16,6 +16,7 @@
     productCategory varchar(50) not null, 
     stockQuantity decimal(5,2) not null,
     priceList decimal(5,2) not null,
+    
 
     constraint Product_PK primary key (productID)
 );
