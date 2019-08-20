@@ -36,7 +36,7 @@ public class ProductDBManager implements DAOInterface {
     public void saveProduct(Product product) {
     
      
-    String sql = "insert into product (productID , productName, productDescription ,productCategory, priceList , stockQuantity) values (?,?,?,?,?,?)"; 
+    String sql = "insert into Product (productID , productName, productDescription ,productCategory, stockQuantity,priceList) values (?,?,?,?,?,?)"; 
         
     try (
         // get connection to database
@@ -49,15 +49,13 @@ public class ProductDBManager implements DAOInterface {
         stmt.setString(1, product.getProductID());
         stmt.setString(2, product.getProductName());
         stmt.setString(3, product.getProductDescription());
-        stmt.setString(4, product.getProductCategory());
-        
-        stmt.setBigDecimal(5, product.getPriceList());
+        stmt.setString(4, product.getProductCategory());      
         stmt.setBigDecimal(5, product.getStockQuantity());
-
+        stmt.setBigDecimal(6, product.getPriceList());
 
         stmt.executeUpdate();  // execute the statement
     }catch (SQLException ex) {
-        //throw new RuntimeException(ex);
+        throw new RuntimeException(ex);
     }
         
       
@@ -109,7 +107,7 @@ public class ProductDBManager implements DAOInterface {
 
     @Override
     public void deleteProduct(Product product) {
-        String sql = "delete from product where productID = ?"; 
+        String sql = "delete from Product where productID = ?"; 
         
     try (
         // get connection to database
@@ -132,7 +130,7 @@ public class ProductDBManager implements DAOInterface {
     @Override
     public Collection<Product> filterCategory(String category) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    String sql = "select * from product where productCategory = ?"; 
+    String sql = "select * from Product where productCategory = ?"; 
         
     try (
         // get connection to database
@@ -214,7 +212,7 @@ public class ProductDBManager implements DAOInterface {
     public Product searchProduct(String id) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
-     String sql = "select * from product where productID = ?"; 
+     String sql = "select * from Product where productID = ?"; 
         
     try (
         // get connection to database
@@ -252,6 +250,9 @@ public class ProductDBManager implements DAOInterface {
 
 
 }
+
+
+
 
 
 
