@@ -12,18 +12,20 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  *
  * @author villa
  */
-public class DAO implements DAOInterface {
-    
+public class DAO implements DAOInterface  {    
 //private static Collection<String> categoryList = new HashSet<>();
 private static Map<String, Product> productIDList = new HashMap<>();
 private static Multimap<String,Product> categories = HashMultimap.create();
 
 
+ 
     @Override
     public void saveProduct(Product product) {
    //productList.add(product);
@@ -35,8 +37,11 @@ private static Multimap<String,Product> categories = HashMultimap.create();
             
 }
 
+
     @Override
     public Collection<Product> getProducts(){
+   SortedSet<String> keys = new TreeSet<>(productIDList.keySet());
+
     return productIDList.values();
 
 }
@@ -55,11 +60,7 @@ private static Multimap<String,Product> categories = HashMultimap.create();
     productIDList.remove(product.getProductID());
     categories.remove(product.getProductCategory(), product);
     
-
-    
-    
-}
-
+    }
     @Override
     public Product searchProduct(String productID){
     if(!productIDList.containsKey(productID)){
@@ -73,6 +74,7 @@ private static Multimap<String,Product> categories = HashMultimap.create();
 
 
 
+    
     @Override
     public Collection<Product> filterCategory(String category){
         Collection<Product> productList = categories.get(category);
@@ -84,6 +86,9 @@ private static Multimap<String,Product> categories = HashMultimap.create();
 }
 
 }
+
+
+
 
 
 
