@@ -5,8 +5,10 @@
  */
 package gui;
 
+import dao.DAOInterface;
+
 /**
- *A gui class that represents the main menu of product administration. It allows
+ *A GUI class that represents the main menu of product administration. It allows
  * user to select the feature they want to use. 
  * @author Rhea Villafuerte
  */
@@ -15,8 +17,12 @@ public class ProductAdministration extends javax.swing.JFrame {
     /**
      * Creates new form ProductAdministration
      */
-    public ProductAdministration() {
+    
+    private DAOInterface dao;
+    
+    public ProductAdministration(DAOInterface dao) {
         initComponents();
+        this.dao = dao;
     }
 
     /**
@@ -99,51 +105,18 @@ public class ProductAdministration extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void addProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductActionPerformed
-        ProductEditor form = new ProductEditor(this, true);
+        ProductEditor form = new ProductEditor(this, true, dao);
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }//GEN-LAST:event_addProductActionPerformed
 
     private void viewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductActionPerformed
-        ProductReport productReport = new ProductReport(this, true);
+        ProductReport productReport = new ProductReport(this, true, dao);
         productReport.setLocationRelativeTo(this);
         productReport.setVisible(true);
     }//GEN-LAST:event_viewProductActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProductAdministration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProductAdministration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProductAdministration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProductAdministration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ProductAdministration().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProduct;

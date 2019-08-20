@@ -55,7 +55,7 @@ public class ProductDBManager implements DAOInterface {
 
         stmt.executeUpdate();  // execute the statement
     }catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
         
       
@@ -101,7 +101,7 @@ public class ProductDBManager implements DAOInterface {
         return products;
 
     } catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
 }
 
@@ -122,7 +122,7 @@ public class ProductDBManager implements DAOInterface {
 
         stmt.executeUpdate();  // execute the statement
     }catch (SQLException ex) {
-        //throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
         
     }
@@ -162,7 +162,7 @@ public class ProductDBManager implements DAOInterface {
         } 
             return productList;
     } catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
     
     
@@ -202,7 +202,7 @@ public class ProductDBManager implements DAOInterface {
         return categories;   
         
     } catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
 
         
@@ -243,7 +243,7 @@ public class ProductDBManager implements DAOInterface {
         }
             
         } catch (SQLException ex) {
-        throw new RuntimeException(ex);
+        throw new DAOException(ex.getMessage(), ex);
     }
  
     }

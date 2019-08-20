@@ -1,4 +1,5 @@
 
+import dao.ProductDBManager;
 import gui.ProductAdministration;
 
 /*
@@ -19,8 +20,8 @@ public class Administration {
 	 */
 	public static void main(String[] args) {
             
-            
-                ProductAdministration mainMenu = new ProductAdministration();
+                ProductDBManager dao = new ProductDBManager();
+                ProductAdministration mainMenu = new ProductAdministration(dao);
                 mainMenu.setLocationRelativeTo(null);
                 mainMenu.setVisible(true);
                 
@@ -30,6 +31,7 @@ public class Administration {
 }
 
     
+
 
 
 
