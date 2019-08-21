@@ -42,7 +42,7 @@ public class ProductAdministration extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
 
-        productAdminLabel.setText("                 Product Administration");
+        productAdminLabel.setText("          Product Administration");
 
         addProduct.setText("Add a New Product");
         addProduct.addActionListener(new java.awt.event.ActionListener() {
