@@ -36,11 +36,11 @@ public class Product {
     private String productCategory;
     @NotNull(message = "Price must be provided.")
     @NotNegative(message = "Price must be zero or greater.")
-    @Length(max=7)
+    @Length(max=8)
     private BigDecimal priceList;
     @NotNull(message = "Quantity must be provided.")
     @NotNegative(message = "Quantity must be zero or greater.")
-    @Length(max=7)
+    @Length(max=8)
     private BigDecimal stockQuantity;
     
     
