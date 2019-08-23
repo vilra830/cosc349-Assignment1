@@ -35,11 +35,11 @@
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="jLabel1" alignment="2" min="-2" pref="190" max="-2" attributes="0"/>
                   <Group type="102" alignment="2" attributes="0">
-                      <Component id="editButton" pref="86" max="32767" attributes="0"/>
+                      <Component id="editButton" pref="107" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="closeButton" pref="96" max="32767" attributes="0"/>
+                      <Component id="closeButton" pref="115" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                      <Component id="deleteButton" pref="99" max="32767" attributes="0"/>
+                      <Component id="deleteButton" pref="118" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
                   <Component id="jLabel3" linkSize="5" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="115" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="156" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="deleteButton" alignment="2" min="-2" pref="42" max="-2" attributes="0"/>
