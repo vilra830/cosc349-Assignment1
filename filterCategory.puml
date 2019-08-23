@@ -1,0 +1,73 @@
+@startuml
+
+	skinparam {
+		Style strictuml
+	}
+	 
+	title View All Products
+	 
+	actor User as user
+	participant "Administration" as main <<main>>
+	main++
+	
+    create "MainMenu" as menu <<frame>>
+    main -> menu : construct
+    
+    main -> menu: setVisible(true)
+    menu++
+    
+    user -> menu: clicks View Products
+    
+    create "ProductReport" as dialog <<dialog>>
+  
+    
+    menu -> dialog : construct
+    dialog++
+
+   'creates a Data Access Object
+   create "ProductDBManager" as dao <<DAO>>
+   dialog -> dao : construct
+  
+   dialog -> dao: getProducts()
+   dao++
+   
+   database Database as project
+   dao -> project++ : select * from product
+   return ResultSet
+   dao -> dao: reconstruct products from ResultSet
+   return products
+   
+   
+   
+   'creates a SimpleListModel to help 
+   create "SimpleListModel" as model <<model>>
+   dialog -> model : construct
+   
+   dialog-> model : updateItems(products)
+   
+   
+   dialog -> dialog : productList.setModel(model)
+   note over dialog: Products now visible
+   
+   user -> dialog : selects Category from combo box
+   dialog -> dialog : filterCategoryBox.getSelectedItem(): category
+   dialog -> dao++ : filterCategory(category)
+   dao-> project++: "select * from Product where productCategory = productCategory
+   return product
+
+
+   
+   dialog -> model++: updateItems(products)
+   dialog -> dialog: productList.setModel(model)
+   
+   
+   note left: products of the selected\n category are now visible
+   
+   
+   
+   
+
+
+    
+	@enduml
+
