@@ -232,22 +232,21 @@ public class ProductEditor extends javax.swing.JDialog {
            dispose();
            
        } 
-      }catch (NumberFormatException nfe) {
-           JOptionPane.showMessageDialog(this,"You have entered a price or quantity that is not a valid number.","Input Error", JOptionPane.ERROR_MESSAGE);   
-               }catch (ConstraintsViolatedException ex) {
-// get the violated constraints from the exception
-ConstraintViolation[] violations = ex.getConstraintViolations();
-// create a nice error message for the user
-String msg = "Please fix the following input problems:";
-for (ConstraintViolation cv : violations) {
-msg += "\n •" + cv.getMessage();
-}
-// display the message to the user
-JOptionPane.showMessageDialog(this, msg, "Input Error",
-JOptionPane.ERROR_MESSAGE);
-}catch (DAOException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
-        }
+      
+             }catch (ConstraintsViolatedException ex) {
+                   // get the violated constraints from the exception
+                   ConstraintViolation[] violations = ex.getConstraintViolations();
+                   // create a nice error message for the user
+                   String msg = "Please fix the following input problems:";
+                   for (ConstraintViolation cv : violations) {
+                       msg += "\n •" + cv.getMessage();
+                   }// display the message to the user                   
+                   JOptionPane.showMessageDialog(this, msg, "Input Error",JOptionPane.ERROR_MESSAGE);
+                   }catch (NumberFormatException nfe) {
+                       JOptionPane.showMessageDialog(this,"You have entered a price or quantity that is not a valid number.","Input Error", JOptionPane.ERROR_MESSAGE);
+                   }catch (DAOException ex) {
+                       JOptionPane.showMessageDialog(this, ex.getMessage(), "Warning", JOptionPane.INFORMATION_MESSAGE);
+                   }
                
                
        
