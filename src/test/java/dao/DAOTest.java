@@ -12,15 +12,17 @@ import static org.junit.Assert.*;
 import domain.Product;
 import java.math.BigDecimal;
 import java.util.Collection;
-
+import dao.ProductDBManager;
+import dao.DAOInterface;
 /**
  *
  * @author villa
  */
 public class DAOTest {
     
-    private DAO dao = new DAO();
-
+  //private DAO dao = new DAO();
+    
+    private DAOInterface dao = new ProductDBManager("jdbc:h2:mem:tests;INIT=runscript from 'src/main/resources/schema.sql'");
     private Product prodOne;
     private Product prodTwo;
     private Product prodThree;
@@ -51,6 +53,9 @@ public class DAOTest {
         dao.deleteProduct(prodOne);
         dao.deleteProduct(prodTwo);
         dao.deleteProduct(prodThree);
+        dao.deleteProduct(prodFour);
+
+        
     }
 
     @Test
@@ -79,7 +84,7 @@ public class DAOTest {
     // ensure the result ONLY includes the two saved products
     assertEquals("Only 3 products in result", 3, products.size());
     
-    System.out.println(products.size());
+
     }
     
     @Test
@@ -150,6 +155,14 @@ public class DAOTest {
     
 
 }
+
+
+
+
+
+
+
+
 
 
 
