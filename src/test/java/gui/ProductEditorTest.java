@@ -13,15 +13,14 @@ import java.util.Collection;
 import org.assertj.swing.core.BasicRobot;
 import org.assertj.swing.core.Robot;
 import org.assertj.swing.fixture.DialogFixture;
+import org.junit.After;
 import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -32,10 +31,6 @@ public class ProductEditorTest {
     private DAOInterface dao;
     private DialogFixture fixture;
     private Robot robot;
-    
-    private Product prodOne;
-    private Product prodTwo;
-    private Product prodThree;
     
     @Before
     public void setUp() {
@@ -48,21 +43,17 @@ public class ProductEditorTest {
   
 
         // add some majors for testing with
-       this.prodOne = new Product("1", "name1", "cat1", "desc1",new BigDecimal("11.00"), new BigDecimal("22.00"));
-       this.prodTwo = new Product("2", "name2", "cat2", "desc2",new BigDecimal("33.00"), new BigDecimal("44.00"));
-       this.prodThree = new Product("3", "name3", "cat3", "desc3",new BigDecimal("55.00"), new BigDecimal("66.00"));
-       
-	Collection<Product> products = new ArrayList<>();
-        products.add(prodOne);
-        products.add(prodTwo);
-        products.add(prodThree);
+        Collection<String> categories = new ArrayList<>();
+        categories.add("cat1");
+        categories.add("cat2");
+        categories.add("cat3");
 
 	
 	// create a mock for the DAO
 	dao = mock(DAOInterface.class);
 
 	// stub the getMajors method to return the test majors
-	when(dao.getProducts()).thenReturn(products);
+	when(dao.getCategories()).thenReturn(categories);
 	
     }
         
@@ -88,28 +79,35 @@ public class ProductEditorTest {
 		// enter some details into the UI components
 		fixture.textBox("idField").enterText("1234");
 		fixture.textBox("nameField").enterText("Jack");
-		fixture.comboBox("cmbMajor").selectItem("Knitting");
+		fixture.comboBox("categoryBox").selectItem("cat1");
+                fixture.textBox("descriptionField").enterText("desc01");
+                fixture.textBox("priceField").enterText("12.34");
+                fixture.textBox("stockQuantityField").enterText("1231");
 
 		// click the save button
-		fixture.button("btnSave").click();
+		fixture.button("saveButton").click();
 
 		// create a Mockito argument captor to use to retrieve the passed student from the mocked DAO
-		ArgumentCaptor<Student> argument = ArgumentCaptor.forClass(Student.class);
+		ArgumentCaptor<Product> argument = ArgumentCaptor.forClass(Product.class);
 
 		// verify that the DAO.save method was called, and capture the passed student
-		verify(dao).save(argument.capture());
+		verify(dao).saveProduct(argument.capture());
 
 		// retrieve the passed student from the captor
-		Student savedStudent = argument.getValue();
+		Product savedProduct = argument.getValue();
 
 		// test that the student's details were properly saved
-		assertEquals("Ensure the ID was saved", Integer.valueOf(1234), savedStudent.getId());
-		assertEquals("Ensure the name was saved", "Jack", savedStudent.getName());
-		assertEquals("Ensure the major was saved", "Knitting", savedStudent.getMajor());
+		assertEquals("Ensure the ID was saved", "1234", savedProduct.getProductID());
+		assertEquals("Ensure the name was saved", "Jack", savedProduct.getProductName());
+		assertEquals("Ensure the major was saved", "cat1", savedProduct.getProductCategory());
+                assertEquals("Ensure the description was saved", "desc01", savedProduct.getProductDescription());
+                assertEquals("Ensure the price was saved", new BigDecimal("12.34"), savedProduct.getPriceList());
+		assertEquals("Ensure the quantity was saved", new BigDecimal("1231"), savedProduct.getStockQuantity());
+
 	}
             
             
     
 }
         
-}
+
