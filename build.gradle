@@ -26,3 +26,11 @@ run {
 
 mainClassName = "Administration"
 
+sourceSets {
+    web {
+        resources {
+            srcDir 'public'
+        }
+    }
+}
+

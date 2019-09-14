@@ -40,13 +40,14 @@ public class Server extends Jooby{
         use(new Gzon());
         use(new ProductModule(dao));
         use(new CustomerModule(custDAO));
-       // use(new AssetModule());
+        use(new AssetModule());
         
 
     }
     
     
 }
+
 
 
 
