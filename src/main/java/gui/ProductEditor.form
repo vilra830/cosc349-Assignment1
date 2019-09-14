@@ -43,31 +43,14 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="nameField" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane1" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="categoryBox" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="priceField" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="stockQuantityField" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="idField" pref="726" max="32767" attributes="0"/>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="nameField" alignment="0" pref="726" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="726" max="32767" attributes="0"/>
+                          <Component id="categoryBox" alignment="0" pref="726" max="32767" attributes="0"/>
+                          <Component id="priceField" alignment="0" pref="726" max="32767" attributes="0"/>
+                          <Component id="stockQuantityField" alignment="0" pref="726" max="32767" attributes="0"/>
+                          <Component id="idField" alignment="0" pref="726" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>

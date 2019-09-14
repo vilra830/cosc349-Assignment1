@@ -30,6 +30,10 @@ public class Customer {
         this.shippingAddress = shippingAddress;
     }
 
+    public Customer() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Integer getCustomerID() {
         return customerID;
     }

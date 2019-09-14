@@ -29,11 +29,11 @@ public class Product {
     private String productName; 
     @NotNull(message = "Description must be provided.")
     @NotBlank(message = "Description must be provided.")
-    @Length(min=5, max=300, message="Description must contain at least five characters.")
+    @Length(min=2, max=300, message="Description must contain at least five characters.")
     private String productDescription;
     @NotNull(message = "Category must be provided.")
     @NotBlank(message = "Category must be provided.")
-    @Length(min=3, max=50, message="Category must contain at least three characters.")
+    @Length(min=2, max=50, message="Category must contain at least three characters.")
     private String productCategory;
     @NotNull(message = "Price must be provided.")
     @NotNegative(message = "Price must be zero or greater.")

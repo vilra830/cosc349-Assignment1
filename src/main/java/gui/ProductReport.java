@@ -34,12 +34,23 @@ public class ProductReport extends javax.swing.JDialog {
         initComponents();
 
        // filterCategoryBox.setEditable(true);
+       
+               
+            filterCategoryBox.setName("filterCategoryBox");
+            productList.setName("productList");
+            searchButton.setName("searchButton");
+            searchField.setName("searchField");
+            deleteButton.setName("deleteButton");
+            editButton.setName("editButton");
 
         model1.updateItems(dao.getCategories());
         filterCategoryBox.setModel(model1);
         
         model.updateItems(dao.getProducts());
         productList.setModel(model);
+        
+    
+        
     }
 
     /**
@@ -190,10 +201,12 @@ public class ProductReport extends javax.swing.JDialog {
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-       if(productList.isSelectionEmpty() == false) {
-           int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete?");
+        Product product =  (Product) productList.getSelectedValue();
+        if(productList.isSelectionEmpty() == true) {
+           JOptionPane.showMessageDialog(this, "List is Empty , nothing to delete" , "info" , JOptionPane.INFORMATION_MESSAGE );
+        } else {
+           int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete?" , "confirm", JOptionPane.YES_NO_OPTION);
            if(result == JOptionPane.YES_OPTION){
-               Product product =  (Product) productList.getSelectedValue();
                dao.deleteProduct(product);
                model.updateItems(dao.getProducts());
                productList.setModel(model);

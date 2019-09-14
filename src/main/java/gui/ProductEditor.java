@@ -43,6 +43,18 @@ public class ProductEditor extends javax.swing.JDialog {
         helper.updateItems(dao.getCategories());
         categoryBox.setModel(helper);
         
+        //set the component names
+           idField.setName("idField"); 
+           nameField.setName("nameField");
+           descriptionField.setName("descriptionField");
+           categoryBox.setName("categoryBox");
+           priceField.setName("priceField");
+           stockQuantityField.setName("stockQuantityField");
+           
+           saveButton.setName("saveButton");
+           cancelButton.setName("canceButton");
+
+           
         
     }
 
