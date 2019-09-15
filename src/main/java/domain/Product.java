@@ -51,14 +51,8 @@ public class Product {
     
     public Product(){}
 
-    public Product(String productID, String productName, BigDecimal priceList) {
-        this.productID = productID;
-        this.productName = productName;
-        this.priceList = priceList;
-    }
     
-    
-    public Product(String productID, String productName, String productCategory, String productDescription, BigDecimal priceList, BigDecimal stockQuantity) {
+    public Product(String productID, String productName, String productDescription,String productCategory, BigDecimal priceList, BigDecimal stockQuantity) {
         this.productID = productID;
         this.productName = productName;
         this.productDescription = productDescription;

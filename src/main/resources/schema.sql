@@ -20,4 +20,16 @@
 
     constraint Product_PK primary key (productID)
 );
+   
 
+   create table Customer(
+    customerID int(20),
+    firstname varchar(50) not null,
+    surname varchar(20) not null,
+    password varchar(20) not null,
+    username varchar(50) not null,
+    emailAddress varchar(300) not null,
+    shippingddress varchar(300) not null, 
+
+    constraint Customer_PK primary key(customerID)
+);

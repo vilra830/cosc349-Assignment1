@@ -16,6 +16,8 @@ public class ProductModule extends Jooby{
     
     public ProductModule(DAOInterface dao){
     get("/api/products", () -> dao.getProducts());
+    
+    get("/api/categories", () -> dao.getCategories());
         
        
         get("/api/products/:id", (req) -> {
@@ -23,10 +25,15 @@ public class ProductModule extends Jooby{
             return dao.searchProduct(id);
 });
     
+         get("/api/categories/:category", (req) -> {
+            String category = req.param("category").value();
+            return dao.filterCategory(category);
+});
     }
     
     
     
 }
+
 
 

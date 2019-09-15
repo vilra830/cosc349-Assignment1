@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="ShoppingApp">
+    <head>
+         <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form>
+        <fieldset class="textInputs">
+			<legend >Account Details</legend>    
+			<ul>
+                <li><label for="firstname">First Name:</label>
+                    <input type="text" placeholder="firstname" required ></li>
+                <li><label for="surname">Surname:</label>
+                    <input type="text" placeholder="surname" required ></li>
+                  <li><label for="username">Username:</label>
+                    <input type="text" placeholder="username" required ></li>
+                  <li><label for="password">Password:</label>
+                    <input type="text" placeholder="paswsword" required ></li>
+                  <li><label for="emailAd">Email Address:</label>
+                    <input type="text" placeholder="email address" required ></li>
+                  <li><label for="shippingAd">Shipping Address:</label>
+                      <input type="text" placeholder="shipping address" required ></li>
+                  <li><input type="submit" name="Create Account"></li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><label for="childSurname">Surname:</label><input type="text" placeholder="Please enter child's surname"  id="childSurname" name="childSurname" required pattern="[a-zA-Z '-]+"></li>
+                <li><label for="birthday">Date of Birth</label><input type="date" name="birthday" id="birthday" min="2015-01-01" max="2019-12-12">
+				<li><p> Child's Gender:</p> <select name="Child's Gender"><option value="female">Female</option><option value="male">Male</option>
+				</select>
+				</li>
+			</ul>
+		</fieldset>
+        
+        </form>
+        <div>TODO write content</div>
+    </body>
+</html>
