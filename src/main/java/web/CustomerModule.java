@@ -8,6 +8,7 @@ package web;
 import dao.CustomerDAO;
 import domain.Customer;
 import org.jooby.Jooby;
+import org.jooby.Result;
 import org.jooby.Status;
 
 /**
@@ -20,7 +21,11 @@ public class CustomerModule extends Jooby{
         
         get("/api/customers/:username", (req) -> {
             String username = req.param("username").value();
+            if (username == null){
+                return new Result().status(Status.NOT_FOUND);
+            } else {
             return custDao.getCustomer(username);
+            }
         });
         
     
@@ -33,5 +38,7 @@ public class CustomerModule extends Jooby{
     }
     
 }
+
+
 
 

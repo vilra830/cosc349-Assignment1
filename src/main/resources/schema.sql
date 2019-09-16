@@ -23,13 +23,13 @@
    
 
    create table Customer(
-    customerID int(20),
-    firstname varchar(50) not null,
+    customerID int auto_increment,
+    firstname varchar(50) not null unique,
     surname varchar(20) not null,
     password varchar(20) not null,
     username varchar(50) not null,
     emailAddress varchar(300) not null,
-    shippingddress varchar(300) not null, 
+    shippingAddress varchar(300) not null, 
 
     constraint Customer_PK primary key(customerID)
 );
