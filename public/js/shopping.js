@@ -104,6 +104,9 @@ module.controller('ShoppingController', function (cart, $sessionStorage, $window
         $window.location.href = 'buy.html';
     }
     
+    this.addToCart = function(quant) {
+        this.theSelectedProduct
+    }
 
 });
 
