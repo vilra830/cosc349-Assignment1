@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
    <div id="menu" ng-controller="CustomerController as custCtrl" ng-init="custCtrl.checkSignIn()">
    <div id="welcome">{{custCtrl.welcome}}</div>
-   <a href=".">Home</a>
+   <a href="index.html">Home</a>
    <a href="products.html" ng-if="custCtrl.signedIn">Browse Products</a>
    <a href="cart.html" ng-if="custCtrl.signedIn">View Cart</a>
    <a href="#" ng-if="custCtrl.signedIn" ng-click="custCtrl.signOut()">Sign Out</a>

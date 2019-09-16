@@ -24,11 +24,11 @@
 
    create table Customer(
     customerID int auto_increment,
-    firstname varchar(50) not null unique,
+    firstname varchar(50) not null ,
     surname varchar(20) not null,
     password varchar(20) not null,
-    username varchar(50) not null,
-    emailAddress varchar(300) not null,
+    username varchar(50) not null unique,
+    emailAddress varchar(300) not null ,
     shippingAddress varchar(300) not null, 
 
     constraint Customer_PK primary key(customerID)

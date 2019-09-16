@@ -17,10 +17,12 @@ import java.util.List;
  */
 public class Sale {
     
+    
     private Integer saleID;
     private LocalDate date;
     private String status;
     private List<SaleItem> items = new ArrayList<>();
+    private Customer customer;
 
     public Sale(Integer saleID, LocalDate date, String status) {
         this.saleID = saleID;
@@ -33,6 +35,11 @@ public class Sale {
     public Integer getSaleID() {
         return saleID;
     }
+    
+    public void setCustomer(Customer customer){
+        this.customer = customer;
+    }
+    
 
     public void setItems(List<SaleItem> items) {
         this.items = items;
@@ -48,6 +55,10 @@ public class Sale {
 
     public String getStatus() {
         return status;
+    }
+    
+    public Customer getCustomer(){
+        return customer;
     }
 
     public void setSaleID(Integer saleID) {

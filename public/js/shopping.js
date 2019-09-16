@@ -7,8 +7,74 @@
 
 "use strict";
 
+class SaleItem {
+
+    constructor(product, quantity) {
+        // only set the fields if we have a valid product
+        if (product) {
+            this.product = product;
+            this.quantityPurchased = quantity;
+            this.salePrice = product.listPrice;
+        }
+    }
+
+    getItemTotal() {
+        return this.salePrice * this.quantityPurchased;
+    }
+
+}
+
+
+class ShoppingCart {
+
+    constructor() {
+        this.items = new Array();
+    }
+
+    reconstruct(sessionData) {
+        for (let item of sessionData.items) {
+            this.addItem(Object.assign(new SaleItem(), item));
+        }
+    }
+
+    getItems() {
+        return this.items;
+    }
+
+    addItem(item) {
+        this.items.push(item);
+    }
+
+    setCustomer(customer) {
+        this.customer = customer;
+    }
+
+    getTotal() {
+        let total = 0;
+        for (let item of this.items) {
+            total += item.getItemTotal();
+        }
+        return total;
+    }
+
+}
+
 // create a new module, and load the other pluggable modules
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
+
+module.factory('cart', function ($sessionStorage) {
+    let cart = new ShoppingCart();
+
+    // is the cart in the session storage?
+    if ($sessionStorage.cart) {
+
+        // reconstruct the cart from the session data
+        cart.reconstruct($sessionStorage.cart);
+    }
+
+    return cart;
+});
+
 
 module.factory('productDAO', function ($resource) {
 return $resource('/api/products/:id');
@@ -25,6 +91,22 @@ return $resource('/api/register');
 module.factory('signInDAO', function ($resource) {
 return $resource('/api/customers/:username');
 });
+
+module.controller('ShoppingController', function (cart, $sessionStorage, $window) {
+    
+    this.items = cart.getItems();
+    this.total = cart.getTotal();
+    this.theSelectedProduct = $sessionStorage.selectedProduct;
+    
+    this.selectedProduct = function(prod) {
+        $sessionStorage.selectedProduct = prod;
+        //redirect to buy.html page
+        $window.location.href = 'buy.html';
+    }
+    
+
+});
+
 
 
 module.controller('ProductController', function (productDAO , categoryDAO) {

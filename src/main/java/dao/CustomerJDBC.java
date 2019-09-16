@@ -29,7 +29,7 @@ public class CustomerJDBC implements CustomerDAO {
     @Override
     public void save(Customer customer) {
         
-        String sql = "insert into Customer (customerID , firstname, surname , password, username , emailAddress , shippingAddress) values (?,?,?,?,?,?,?)"; 
+        String sql = "insert into Customer (firstname, surname , password, username , emailAddress , shippingAddress) values (?,?,?,?,?,?)"; 
         
     try (
         // get connection to database
@@ -39,13 +39,13 @@ public class CustomerJDBC implements CustomerDAO {
         PreparedStatement stmt = dbCon.prepareStatement(sql);
     ) { 
         
-        stmt.setInt(1, customer.getCustomerID());
-        stmt.setString(2, customer.getFirstname());
-        stmt.setString(3, customer.getSurname());
-        stmt.setString(4, customer.getPassword());      
-        stmt.setString(5, customer.getUsername());
-        stmt.setString(6, customer.getEmailAddress());
-        stmt.setString(7, customer.getShippingAddress());
+       // stmt.setInt(1, customer.getCustomerID());
+        stmt.setString(1, customer.getFirstname());
+        stmt.setString(2, customer.getSurname());
+        stmt.setString(3, customer.getPassword());      
+        stmt.setString(4, customer.getUsername());
+        stmt.setString(5, customer.getEmailAddress());
+        stmt.setString(6, customer.getShippingAddress());
 
 
         stmt.executeUpdate();  // execute the statement
@@ -131,6 +131,9 @@ public class CustomerJDBC implements CustomerDAO {
     
     
 }
+
+
+
 
 
 
