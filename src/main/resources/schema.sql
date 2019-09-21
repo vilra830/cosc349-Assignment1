@@ -33,3 +33,28 @@
 
     constraint Customer_PK primary key(customerID)
 );
+
+
+create table Sale(
+    saleID int auto_increment,
+    date timestamp,
+    status varchar(50),
+    username varchar(50) not null,
+
+    constraint Sale_PK primary key(saleID),
+    constraint Sale foreign key (username) references Customer
+    
+);
+
+create table SaleItem(
+    purchaseQuantity int(8) not null,
+    salePrice decimal(8,2) not null,
+    productID int not null, 
+    saleID int not null,
+
+    constraint SaleItem_PK primary key(productID , saleID),
+    constraint SaleItem_Product foreign key(productID) references Product,
+    constraint SaleItem_Sale foreign key(saleID) references Sale
+    
+);
+   
