@@ -23,6 +23,10 @@ public class SaleItem {
     }
 
     
+    public SaleItem(Product product, BigDecimal purchaseQuantity){
+        this.product = product;
+        this.purchaseQuantity = purchaseQuantity;
+    }
     
     public SaleItem(BigDecimal purchaseQuantity, BigDecimal salePrice, Product product , Sale sale) {
         this.purchaseQuantity = purchaseQuantity;
