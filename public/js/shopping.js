@@ -14,7 +14,7 @@ class SaleItem {
         if (product) {
             this.product = product;
             this.quantityPurchased = quantity;
-            this.salePrice = product.listPrice;
+            this.salePrice = product.priceList;
         }
     }
 
@@ -84,6 +84,10 @@ module.factory('categoryDAO', function ($resource) {
 return $resource('/api/categories/:cat');
 });
 
+module.factory('saleDAO', function ($resource) {
+return $resource('/api/sales');
+});
+
 module.factory('registerDAO', function ($resource) {
 return $resource('/api/register');
 });
@@ -97,6 +101,7 @@ module.controller('ShoppingController', function (cart, $sessionStorage, $window
     this.items = cart.getItems();
     this.total = cart.getTotal();
     this.theSelectedProduct = $sessionStorage.selectedProduct;
+     //this.quantity = $sessionStorage.quantity;
     
     this.selectedProduct = function(prod) {
         $sessionStorage.selectedProduct = prod;
@@ -105,8 +110,32 @@ module.controller('ShoppingController', function (cart, $sessionStorage, $window
     }
     
     this.addToCart = function(quant) {
-        this.theSelectedProduct
-    }
+        let theSelectedProduct = $sessionStorage.selectedProduct;
+        
+        $sessionStorage.quantity = quant;
+        
+        
+        let item = new SaleItem($sessionStorage.selectedProduct, $sessionStorage.quantity);
+        cart.addItem(item);
+        $sessionStorage.cart = cart;
+        console.log(cart);
+        
+        $window.location.href = "products.html";
+    };
+    
+    this.checkOut = function () {
+        
+        
+       cart.setCustomer($sessionStorage.customer);
+       saleDAO.save(cart);
+       delete $sessionStorage.cart;
+       $window.location.href = "thankyou.html";
+       
+       
+       
+        
+    };
+    
 
 });
 
