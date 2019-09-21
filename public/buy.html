@@ -11,27 +11,31 @@ and open the template in the editor.
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" href="style.css">
+
         
-        <title>TODO supply a title</title>
+        <title>CART</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body ng-controller="ShoppingController as shopCtrl">
         <div ng-include="'menu.html'" ></div>
         <h1>How many do you want to buy?</h1>
-        <ul>
-            <li>ID          : {{shopCtrl.theSelectedProduct.productID}}</li>
-            <li>Name        : {{shopCtrl.theSelectedProduct.productName}}</li>
-            <li>Description : {{shopCtrl.theSelectedProduct.productDescription}}</li>
-            <li>Price       : ${{shopCtrl.theSelectedProduct.priceList}}</li>
-            <li>Quantity    : {{shopCtrl.theSelectedProduct.stockQuantity}}</li>
-        </ul>
+        
+        <dl>
+            <dt>ID:</dt><dd>{{shopCtrl.theSelectedProduct.productID}}</dd>
+            <dt>Name:</dt><dd>{{shopCtrl.theSelectedProduct.productName}}</dd>
+            <dt>Description:</dt><dd>{{shopCtrl.theSelectedProduct.productDescription}}</dd>
+            <dt>Price:</dt><dd>${{shopCtrl.theSelectedProduct.priceList}}</dd>
+            <dt>Quantity:</dt><dd>{{shopCtrl.theSelectedProduct.stockQuantity}}</dd>
+        </dl>
+
         <form>
             <fieldset>
                 <legend>Quantity to buy</legend>
                 
-                <label for=quantity>How many</label>
-                <input type="text" required>
+                <label>How many</label>
+                <input type="number" min="1" required>
                 
                 <button ng-click="shopCtrl.addToCart(quantity)">Add to Cart</button>
             </fieldset>
