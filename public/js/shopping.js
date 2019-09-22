@@ -125,12 +125,16 @@ module.controller('ShoppingController', function (cart, saleDAO, $sessionStorage
     
     this.checkOut = function () {
         
+       if(cart > 0){
+        
         
        cart.setCustomer($sessionStorage.customer);
        saleDAO.save(cart);
        delete $sessionStorage.cart;
        $window.location.href = "thankyou.html";
-       
+   } else {
+       this.message = "Cart empty nothing to checkout!"
+   }
        
        
         
