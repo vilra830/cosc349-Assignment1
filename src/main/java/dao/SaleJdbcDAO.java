@@ -31,7 +31,7 @@ public class SaleJdbcDAO implements SaleDAO {
 			try (
 					PreparedStatement insertOrderStmt = con.prepareStatement(
 							//"**** SQL for saving Sale goes here ****",
-                                                "insert into Sale(date, unsername) values(?,?)",
+                                                "insert into Sale(date, username) values(?,?)",
 							Statement.RETURN_GENERATED_KEYS);
  
 					PreparedStatement insertOrderItemStmt = con.prepareStatement(
@@ -157,6 +157,7 @@ public class SaleJdbcDAO implements SaleDAO {
 	}
  
 }
+
 
 
 

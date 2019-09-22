@@ -11,7 +11,7 @@ and open the template in the editor.
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
         
         <title>CART</title>
@@ -20,6 +20,7 @@ and open the template in the editor.
     </head>
     <body ng-controller="ShoppingController as shopCtrl">
         <div ng-include="'menu.html'" ></div>
+        <main>
         <h1>How many do you want to buy?</h1>
         
         <dl>
@@ -35,11 +36,14 @@ and open the template in the editor.
                 <legend>Quantity to buy</legend>
                 
                 <label>How many</label>
-                <input type="number" min="1" required>
+                <input type="number" min="1" name="quantity" ng-model="quantity" required>
                 
                 <button ng-click="shopCtrl.addToCart(quantity)">Add to Cart</button>
             </fieldset>
                 
         </form>
+        </main>
+     <footer>A project for INFO202 2019</footer>
+        
     </body>
 </html>
