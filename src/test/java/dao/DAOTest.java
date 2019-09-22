@@ -37,15 +37,13 @@ public class DAOTest {
     
     @Before
     public void setUp() {
-       this.prodOne = new Product("1", "name1", "cat1", "desc1",new BigDecimal("11.00"), new BigDecimal("22.00"));
-       this.prodTwo = new Product("2", "name2", "cat2", "desc2",new BigDecimal("33.00"), new BigDecimal("44.00"));
-       this.prodThree = new Product("3", "name3", "cat3", "desc3",new BigDecimal("55.00"), new BigDecimal("66.00"));
-       this.prodFour = new Product("4", "name3", "cat2", "desc4",new BigDecimal("55.00"), new BigDecimal("66.00"));
+       this.prodOne = new Product("1", "name1",  "desc1", "cat1", new BigDecimal("11.00"), new BigDecimal("22.00"));
+       this.prodTwo = new Product("2", "name2",  "desc2", "cat2",new BigDecimal("33.00"), new BigDecimal("44.00"));
+       this.prodThree = new Product("3", "name3",  "desc3", "cat3",new BigDecimal("55.00"), new BigDecimal("66.00"));
         // save the products
 
         dao.saveProduct(prodOne);
         dao.saveProduct(prodTwo);
-        dao.saveProduct(prodFour);
     }
     
     @After
@@ -53,7 +51,6 @@ public class DAOTest {
         dao.deleteProduct(prodOne);
         dao.deleteProduct(prodTwo);
         dao.deleteProduct(prodThree);
-        dao.deleteProduct(prodFour);
 
         
     }
@@ -78,11 +75,10 @@ public class DAOTest {
     // ensure the result includes the two saved products
     assertTrue("prodOne should exist", products.contains(prodOne));
     assertTrue("prodTwo should exist", products.contains(prodTwo));
-    assertTrue("prodFour should exist", products.contains(prodFour));
         assertFalse("prodThree should not exist", products.contains(prodThree));
 
     // ensure the result ONLY includes the two saved products
-    assertEquals("Only 3 products in result", 3, products.size());
+    assertEquals("Only 3 products in result", 2, products.size());
     
 
     }
@@ -146,7 +142,6 @@ public class DAOTest {
         Collection<Product> filteredProducts =  dao.filterCategory("cat2");
         
         assertTrue("prodTwo should be in the list", filteredProducts.contains(prodTwo));
-        assertTrue("prodFour should be in the list", filteredProducts.contains(prodFour));
         assertFalse("prodOne should not be in the list", filteredProducts.contains(prodOne));
 
    
@@ -155,6 +150,8 @@ public class DAOTest {
     
 
 }
+
+
 
 
 

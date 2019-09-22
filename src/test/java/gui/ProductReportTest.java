@@ -69,8 +69,8 @@ public class ProductReportTest {
         
            // create a products collection for stubbing purposes
    
-   this.p1 = new Product("ID1", "name1", "cat1", "desc12", new BigDecimal("11.00"), new BigDecimal("22.00"));
-   this.p2 = new Product("ID2", "name2", "cat2",  "desc13", new BigDecimal("11.00"), new BigDecimal("22.00"));
+   this.p1 = new Product("ID1", "name1",  "desc12", "cat1", new BigDecimal("11.00"), new BigDecimal("22.00"));
+   this.p2 = new Product("ID2", "name2",  "desc13", "cat2",  new BigDecimal("11.00"), new BigDecimal("22.00"));
    products.add(p1);
    products.add(p2);
 
@@ -87,6 +87,7 @@ public class ProductReportTest {
    when(dao.searchProduct("ID1")).thenReturn(p1);
    
    when(dao.getCategories()).thenReturn(categories.keySet());
+   
    when(dao.filterCategory("cat1")).thenReturn(categories1);
    
    
@@ -170,9 +171,9 @@ public class ProductReportTest {
 
                            
                 
-                assertTrue("list contains p1", model.contains("cat1"));
-                assertTrue("list contains p2", model.contains("cat2"));
-                assertEquals("list contains the correct number of products", 2, model.getSize());
+                assertTrue("list contains cat1", model.contains("cat1"));
+                assertTrue("list contains cat2", model.contains("cat2"));
+                assertEquals("list contains the correct number of categories", 2, model.getSize());
                 
                 //fixture.comboBox("filterCategoryBox").selectItem("cat1");
                 
@@ -243,6 +244,9 @@ public class ProductReportTest {
 
     
 }
+
+
+
 
 
 

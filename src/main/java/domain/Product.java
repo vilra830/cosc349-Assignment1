@@ -43,8 +43,7 @@ public class Product {
     @NotNegative(message = "Quantity must be zero or greater.")
     @Length(max=8)
     private BigDecimal stockQuantity;
-    
-    
+  
     
     
     
