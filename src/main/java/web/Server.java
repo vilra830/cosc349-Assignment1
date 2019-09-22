@@ -8,6 +8,7 @@ package web;
 import dao.CustomerCollectionsDAO;
 import dao.CustomerJDBC;
 import dao.ProductDBManager;
+import dao.SaleJdbcDAO;
 import java.util.concurrent.CompletableFuture;
 import org.jooby.Jooby;
 import org.jooby.json.Gzon;
@@ -20,6 +21,7 @@ public class Server extends Jooby{
     
     private ProductDBManager dao = new ProductDBManager();
     private CustomerJDBC custDAO = new CustomerJDBC();
+    private SaleJdbcDAO saleDAO = new SaleJdbcDAO();
     
     public static void main(String[] args) throws Exception {
         System.out.println("\nStarting Server.");
@@ -42,12 +44,14 @@ public class Server extends Jooby{
         use(new ProductModule(dao));
         use(new CustomerModule(custDAO));
         use(new AssetModule());
+        use(new SaleModule(saleDAO));
         
 
     }
     
     
 }
+
 
 
 
