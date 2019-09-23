@@ -96,7 +96,7 @@ module.factory('signInDAO', function ($resource) {
 return $resource('/api/customers/:username');
 });
 
-module.controller('ShoppingController', function (saleDAO , cart,  $sessionStorage, $window) {
+module.controller('ShoppingController', function (cart, saleDAO, $sessionStorage, $window) {
     
     this.items = cart.getItems();
     this.total = cart.getTotal();
@@ -110,9 +110,7 @@ module.controller('ShoppingController', function (saleDAO , cart,  $sessionStora
     }
     
     this.addToCart = function(quantity) {
-      let theSelectedProduct = $sessionStorage.selectedProduct;
-        console.log(quantity);
-            
+        let theSelectedProduct = $sessionStorage.selectedProduct;
         
         let item = new SaleItem(theSelectedProduct, quantity);
         cart.addItem(item);
@@ -124,12 +122,16 @@ module.controller('ShoppingController', function (saleDAO , cart,  $sessionStora
     
     this.checkOut = function () {
         
+       if(cart > 0){
+        
         
        cart.setCustomer($sessionStorage.customer);
        saleDAO.save(cart);
        delete $sessionStorage.cart;
-       $window.location.href = 'thankyou.html';
-       
+       $window.location.href = "thankyou.html";
+   } else {
+       this.message = "Cart empty nothing to checkout!"
+   }
        
        
         
