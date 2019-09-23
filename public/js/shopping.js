@@ -13,13 +13,13 @@ class SaleItem {
         // only set the fields if we have a valid product
         if (product) {
             this.product = product;
-            this.quantityPurchased = quantity;
+            this.purchaseQuantity = quantity;
             this.salePrice = product.priceList;
         }
     }
 
     getItemTotal() {
-        return this.salePrice * this.quantityPurchased;
+        return this.salePrice * this.purchaseQuantity;
     }
 
 }
@@ -96,7 +96,7 @@ module.factory('signInDAO', function ($resource) {
 return $resource('/api/customers/:username');
 });
 
-module.controller('ShoppingController', function (cart, $sessionStorage, $window) {
+module.controller('ShoppingController', function (saleDAO , cart,  $sessionStorage, $window) {
     
     this.items = cart.getItems();
     this.total = cart.getTotal();
@@ -109,13 +109,12 @@ module.controller('ShoppingController', function (cart, $sessionStorage, $window
         $window.location.href = 'buy.html';
     }
     
-    this.addToCart = function(quant) {
-        let theSelectedProduct = $sessionStorage.selectedProduct;
+    this.addToCart = function(quantity) {
+      let theSelectedProduct = $sessionStorage.selectedProduct;
+        console.log(quantity);
+            
         
-        $sessionStorage.quantity = quant;
-        
-        
-        let item = new SaleItem($sessionStorage.selectedProduct, $sessionStorage.quantity);
+        let item = new SaleItem(theSelectedProduct, quantity);
         cart.addItem(item);
         $sessionStorage.cart = cart;
         console.log(cart);
@@ -129,12 +128,12 @@ module.controller('ShoppingController', function (cart, $sessionStorage, $window
        cart.setCustomer($sessionStorage.customer);
        saleDAO.save(cart);
        delete $sessionStorage.cart;
-       $window.location.href = "thankyou.html";
+       $window.location.href = 'thankyou.html';
        
        
        
         
-    };
+    }
     
 
 });
