@@ -12,7 +12,7 @@ and open the template in the editor.
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>         
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
         
         <title>View Cart</title>
@@ -21,7 +21,8 @@ and open the template in the editor.
     </head>
     <body ng-controller="ShoppingController as shopCtrl">
         <div ng-include="'menu.html'" ></div>
-        <h1>Shopping Cart</h1>       
+        <main>
+            <h1>Shopping Cart</h1>       
         
         <table>
             <thead>
@@ -34,7 +35,7 @@ and open the template in the editor.
                 </tr>
             </thead>
                 <tr ng-repeat="item in shopCtrl.items" >
-                    <td>{{item.productName}}</td>
+                    <td>{{item.product.productName}}</td>
                     <td>{{item.salePrice}}</td>
                     <td>{{item.purchaseQuantity}}</td>
                     <td>{{item.getItemTotal()}}</td>
@@ -44,7 +45,7 @@ and open the template in the editor.
                 
                 <tr>
                     <td colspan="3">Total Cost</td>
-                    <td>{{cartCtrl.total}}</td>
+                    <td>{{shopCtrl.total}}</td>
                     
                 </tr>
                 
@@ -54,6 +55,7 @@ and open the template in the editor.
         </table>
         
         <button ng-click="shopCtrl.checkOut()">Check Out Cart</button>
-                    
+    </main>
+        <footer>A project for INFO202 2019</footer>
     </body>
 </html>
