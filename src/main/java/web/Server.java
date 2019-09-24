@@ -46,11 +46,13 @@ public class Server extends Jooby{
         use(new AssetModule());
         use(new SaleModule(saleDAO));
         
+        
 
     }
     
     
 }
+
 
 
 

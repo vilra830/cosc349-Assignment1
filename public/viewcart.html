@@ -24,7 +24,7 @@ and open the template in the editor.
         <main>
             <h1>Shopping Cart</h1>       
         
-        <table>
+        <table id="timetable">
             <thead>
                 <tr>
                     
@@ -38,14 +38,14 @@ and open the template in the editor.
                     <td>{{item.product.productName}}</td>
                     <td>{{item.salePrice}}</td>
                     <td>{{item.purchaseQuantity}}</td>
-                    <td>{{item.getItemTotal()}}</td>
+                    <td>${{item.getItemTotal()}}</td>
                     
                     
                 </tr>  
                 
                 <tr>
                     <td colspan="3">Total Cost</td>
-                    <td>{{shopCtrl.total}}</td>
+                    <td>${{shopCtrl.total}}</td>
                     
                 </tr>
                 
@@ -54,9 +54,8 @@ and open the template in the editor.
             
         </table>
         
-        <button ng-click="shopCtrl.checkOut()">Check Out Cart</button>
-                <button ng-click="shopCtrl.checkOut()">CheckOut Cart</button>
-        
+        <button id="checkout" ng-click="shopCtrl.checkOut()">Check Out Cart</button>
+         
         <div>
             {{shopCtrl.message}}
         </div>

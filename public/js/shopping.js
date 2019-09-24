@@ -107,7 +107,7 @@ module.controller('ShoppingController', function (cart, saleDAO, $sessionStorage
         $sessionStorage.selectedProduct = prod;
         //redirect to buy.html page
         $window.location.href = 'buy.html';
-    }
+    };
     
     this.addToCart = function(quantity) {
         let theSelectedProduct = $sessionStorage.selectedProduct;
@@ -122,7 +122,7 @@ module.controller('ShoppingController', function (cart, saleDAO, $sessionStorage
     
     this.checkOut = function () {
         
-       if(cart > 0){
+       if($sessionStorage.cart){
         
         
        cart.setCustomer($sessionStorage.customer);
@@ -201,6 +201,16 @@ this.signIn = function (username, password) {
         this.signedIn = false;
     }
 };
+
+    this.signOut = function () {
+        
+        $sessionStorage.$reset();
+        $window.location.href = "index.html";
+        
+      
+    };
+    
+    
 
 
 });

@@ -31,7 +31,7 @@ public class SaleJdbcDAO implements SaleDAO {
 			try (
 					PreparedStatement insertOrderStmt = con.prepareStatement(
 							//"**** SQL for saving Sale goes here ****",
-                                                "insert into Sale(date, username) values(?,?)",
+                                                "insert into Sale(date, customerID) values(?,?)",
 							Statement.RETURN_GENERATED_KEYS);
  
 					PreparedStatement insertOrderItemStmt = con.prepareStatement(
@@ -40,7 +40,7 @@ public class SaleJdbcDAO implements SaleDAO {
  
 					PreparedStatement updateProductStmt = con.prepareStatement(
 							//"**** SQL for updating product quantity goes here ****"
-                                                        "update Product where stockQuantity = ? , where productID = ? "
+                                                        "update Product set stockQuantity = ?  where productID = ? "
                                                 
                                         );
  
@@ -68,11 +68,11 @@ public class SaleJdbcDAO implements SaleDAO {
  
 				// ****
 				// write code here that saves the timestamp and username in the
-				// sale table using the insertOrderStmt statement.
+				// sale table using the insertOrderStmt statement. 
 				// ****
                                 
                                 insertOrderStmt.setTimestamp(1, timestamp);
-                                insertOrderStmt.setString(2, customer.getUsername());
+                                insertOrderStmt.setInt(2, customer.getCustomerID());
                                 
                                 insertOrderStmt.executeUpdate();
  
@@ -121,7 +121,7 @@ public class SaleJdbcDAO implements SaleDAO {
 					// ****
  
                                         updateProductStmt.setBigDecimal(1, product.getStockQuantity().subtract(item.getPurchaseQuantity()));
-                                        updateProductStmt.setString(1, product.getProductID());
+                                        updateProductStmt.setString(2, product.getProductID());
                                         
                                         updateProductStmt.executeUpdate();
  
@@ -157,6 +157,10 @@ public class SaleJdbcDAO implements SaleDAO {
 	}
  
 }
+
+
+
+
 
 
 

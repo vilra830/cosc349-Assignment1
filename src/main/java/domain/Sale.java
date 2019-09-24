@@ -24,10 +24,11 @@ public class Sale {
     private List<SaleItem> items = new ArrayList<>();
     private Customer customer;
 
-    public Sale(Integer saleID, LocalDate date, String status) {
+    public Sale(Integer saleID, LocalDate date, String status, Customer customer) {
         this.saleID = saleID;
         this.date = date;
         this.status = status;
+        this.customer = customer;
     }
     
     public Sale(){}

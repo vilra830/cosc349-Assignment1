@@ -39,10 +39,10 @@ create table Sale(
     saleID int auto_increment,
     date timestamp,
     status varchar(50),
-    username varchar(50) not null,
+    customerID int not null,
 
     constraint Sale_PK primary key(saleID),
-    constraint Sale foreign key (username) references Customer
+    constraint Sale foreign key (customerID) references Customer
     
 );
 

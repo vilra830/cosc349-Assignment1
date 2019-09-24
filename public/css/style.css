@@ -12,18 +12,24 @@ and open the template in the editor.
 *CSS style for Escape Holiday Park Webpage
 *@author : Rhea Villafuerte adapted from Classic Cinema
 */
-
-html{
-    color: #3862bc ;
-    background-color: #cedbf6;
-    font-family: Verdana, sans-serif;
-    font-size: 12px;
-}
-
 body{
-    width:900px;
-    margin: 0 auto;
+max-width: 800px;
+margin: auto;
+font-family: 'Josefin Sans' ,  Times, serif , Arial;
+background-color: #eaf5fc;
+color: #2e5090;
+
+
 }
+/*Code to style header that applies to all pages*/
+header{
+position: relative;
+border:1px solid;
+border-radius: 20px;
+padding: 20px;
+max-width: 100%;
+}
+
 
 header, main, footer{
     width:100%;
@@ -31,90 +37,136 @@ header, main, footer{
     margin:10px 10px 10px 10px;
     border:1px solid;
     border-radius: 0 10px 10px 10px;
-    background-color: #fffddf;
-    color: inherit;
 }
-/** Header */
-
-
-header {
-   background-color: #3c5e3b;
-    color: inherit;
-    position:fixed;
-    top:0;
-    width:inherit;
-    z-index: 100;
+#welcome{
+    
+    margin: auto;
+    padding: auto;
 }
-/** Navigation **/
-.mainNav{
-    height: 40px;
-}
-.menu a {
+#menu ul {
     display:flex;
     list-style:none;
     width: 50%;
     height: 100%;
-    margin-left: auto;
+    margin: auto;
     justify-content: space-around;
     align-items: center;
+    
 }
-.mainNav li a{
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px;
-    border-style: solid;
-    margin:5px;
+
+figure{
+    display: flex;
+    margin:auto;;
+    
 }
-/* unvisited link */
-.mainNav a:link {
-    background-color: #b1ffda;
-    color: #fffddf;
+
+figure img{
+    margin: auto;
 }
-/* visited link */
-.mainNav a:visited {
-    background-color: #fffddf;;
-    color: #015076;
-}
-/* mouse over link */
-.mainNav a:hover {
+#menu  a {
     background-color: #2e5090;
     color: #dff3f8;
-}
-/* selected link */
-.mainNav a:active {
-    background-color: white ;
-    color: #234657;
-}
-h1, h2, #intro{
-    font-family:'Kaushan Script' ,  Times, serif , Arial;
+    border-style: solid;
+    padding: 5px;
 }
 
 h1{
-    font-size: 48px;
-    display: block;
-    color:#fffddf ;
+    font-size: 30px;
     padding: 10px 10px 20px 40px;
-    text-align: justify-all;
     margin:auto;
-    background-color:inherit;
+    text-align: center;
 }
 
-/**index page*/
-#index{
-    width:100%;
-    height:300px;
-    padding:0 100px 170px 20px;
+.cat {
+    
+    display:flex;    
+    height: 100%;
+    width:50%;
+    padding: 5px;
+    margin:auto;
+    margin-bottom:10px;
+    justify-content: space-around;
+ 
 }
-#intro{
-    text-align: justify;
-    font-size: x-large;
+
+
+
+#timetable{
+  	border-collapse: collapse; 	
+	margin : auto ;
+	background-color: white;
+  	color: inherit;
+}
+
+ dl {
+    border: 3px double #ccc;
+    padding: 0.5em;
+  }
+  
+  dt {
+    float: left;
+    width: 50px;
     font-weight: bold;
-    margin-bottom: 20px;
+    
+  }
+  
+  dd {
+    margin: 0 40px 0 120px;
+    padding: 0 0 0.5em 0;
+  }
+
+#timetable td, #timetable th {
+  border: 1px solid #ddd;
+  padding: 5px 5px 5px 5px;
+  margin : auto;
+  text-align: left;	
 }
 
+#timetable tr:nth-child(even){
+	background-color: #c4c8cc;
+	color:inherit;
+}
 
+.textInputs ul{
+    
+    
+    list-style:none;
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    
+    
+    
+}
 
+.textInputs li{
+    
+    padding:5px;
+    margin: 5px;
+}
+
+.textInputs label{
+	float:left;
+	width: 100px;
+	padding: 5px;
+
+	
+}
+
+.textInputs button{
+	padding:5px;
+        margin-left: 150px;
+}	
+#checkout{
+    
+    margin-left: 45%;
+    margin-top: 20px;
+    text-align: center;
+    
+}
 /**   Footer   **/
 footer{
+    margin-top: 20px;
     text-align: left;
+    padding:10px;
 }
