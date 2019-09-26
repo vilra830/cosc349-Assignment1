@@ -1,0 +1,40 @@
+@startuml
+skinparam {
+		Style strictuml
+	}
+	 
+
+actor "User" as user
+
+participant "Products Page" as browser <<Web Browser>>
+
+user->browser++: clicks Browse Products
+
+participant "Product Controller" as prodCtrl <<JS>>
+
+browser->prodCtrl++:  productDAO.query()
+
+participant "Product Module" as productModule <<Jooby>>
+
+
+prodCtrl->productModule++: GET/api/products
+
+participant "ProductDBManager" as dao 
+
+productModule->dao++: getProducts()
+
+participant "Database" as db
+
+dao->db++: select * from Product
+
+return ResultSet
+
+return products
+return json products
+loop ng-repeat prodCtrl
+
+return products are displayed by ng-repeat
+end
+return user sees products
+
+@enduml

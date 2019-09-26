@@ -196,7 +196,7 @@ this.signIn = function (username, password) {
     // has the customer been added to the session?
     if ($sessionStorage.customer) {
         this.signedIn = true;
-        this.welcome = "Welcome " + $sessionStorage.customer.firstname;
+        this.welcome = "Welcome " + $sessionStorage.customer.firstname + " " + $sessionStorage.customer.surname+ " !";
     } else {
         this.signedIn = false;
     }

@@ -49,7 +49,7 @@ create table Sale(
 create table SaleItem(
     purchaseQuantity int(8) not null,
     salePrice decimal(8,2) not null,
-    productID int not null, 
+    productID varchar(20) , 
     saleID int not null,
 
     constraint SaleItem_PK primary key(productID , saleID),

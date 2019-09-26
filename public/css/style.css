@@ -44,6 +44,8 @@ header, main, footer{
     padding: auto;
 }
 #menu ul {
+    
+    list-style:none;
     display:flex;
     width: 50%;
     height: 100%;
@@ -51,6 +53,10 @@ header, main, footer{
     justify-content: space-around;
     align-items: center;
     
+}
+
+#intro{
+    text-align: center;
 }
 
 figure{
