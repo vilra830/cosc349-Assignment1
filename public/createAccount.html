@@ -26,17 +26,18 @@ and open the template in the editor.
 			<legend >Account Details</legend>   
                         <ul>
                             <li><label for="firstname">First Name:</label>
-                    <input type="text" ng-model="customer.firstname" required ></li>
+                    <input type="text" size="30" ng-model="customer.firstname" required ></li>
                 <li><label for="surname">Surname:</label>
-                    <input type="text" ng-model="customer.surname"  required ></li>
+                    <input type="text" size="30" ng-model="customer.surname"  required ></li>
                 <li><label for="username">Username:</label>
-                    <input type="text" ng-model="customer.username"  required ></li>
+                    <input type="text" size="30" ng-model="customer.username"  required ></li>
                 <li><label for="password">Password:</label>
-                    <input type="password" ng-model="customer.password"  required ></li>
+                    <input type="password" size="30" ng-model="customer.password"  required ></li>
                 <li><label for="emailAd">Email:</label>
-                    <input type="email" ng-model="customer.emailAddress"  required ></li>
+                    <input type="email" size="30" ng-model="customer.emailAddress"  required ></li>
                 <li><label for="shippingAd">Shipping Address:</label>
-                      <input type="text" ng-model="customer.shippingAddress" required ></li>
+                   
+                    <textarea rows="4" cols="30" ng-model="customer.shippingAddress" required ></textarea></li>
                 <li><button type="submit">Create Account</button></li>
 
                         </ul>
