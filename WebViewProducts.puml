@@ -2,6 +2,10 @@
 skinparam {
 		Style strictuml
 	}
+
+/'
+Sequence Diagram adapted from Sequence Diagram snippet shown in lecture 16
+'/
 	 
 
 actor "User" as user
