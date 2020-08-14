@@ -23,7 +23,9 @@ public class Sale {
     private String status;
     private List<SaleItem> items = new ArrayList<>();
     private Customer customer;
-
+    
+    
+    
     public Sale(Integer saleID, LocalDate date, String status, Customer customer) {
         this.saleID = saleID;
         this.date = date;

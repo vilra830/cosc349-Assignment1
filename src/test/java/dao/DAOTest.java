@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
 import domain.Product;
 import java.math.BigDecimal;
 import java.util.Collection;
-import dao.ProductDBManager;
-import dao.DAOInterface;
+
 /**
  *
  * @author villa
@@ -35,6 +34,7 @@ public class DAOTest {
     public DAOTest() {
     }
     
+    
     @Before
     public void setUp() {
        this.prodOne = new Product("1", "name1",  "desc1", "cat1", new BigDecimal("11.00"), new BigDecimal("22.00"));
@@ -44,6 +44,11 @@ public class DAOTest {
 
         dao.saveProduct(prodOne);
         dao.saveProduct(prodTwo);
+//        System.out.println(prodOne.toString());
+
+
+String[] stringArray = {"1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9" , "20"};
+System.out.println(stringArray.toString());
     }
     
     @After
@@ -59,11 +64,15 @@ public class DAOTest {
     public void testSaveProduct() {
 
         
+
+        
         // save the product using the DAO
+        
+        
     dao.saveProduct(prodThree);
 // ensure that the data store includes the product
     assertTrue("Ensure that the product was saved",dao.getProducts().contains(prodThree));
-    assertTrue("Ensure that the product was saved",dao.getCategories().contains(prodThree.getProductCategory()));
+//    assertTrue("Ensure that the product was saved",dao.getCategories().contains(prodThree.getProductCategory()));
     
     }
     
@@ -71,6 +80,7 @@ public class DAOTest {
     @Test
     public void testGetProducts() {
     Collection<Product> products = dao.getProducts();
+        System.out.println(products.toString());
 
     // ensure the result includes the two saved products
     assertTrue("prodOne should exist", products.contains(prodOne));
@@ -150,6 +160,14 @@ public class DAOTest {
     
 
 }
+
+
+
+
+
+
+
+
 
 
 

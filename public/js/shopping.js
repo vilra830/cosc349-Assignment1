@@ -87,7 +87,6 @@ return $resource('/api/categories/:cat');
 module.factory('saleDAO', function ($resource) {
 return $resource('/api/sales');
 });
-
 module.factory('registerDAO', function ($resource) {
 return $resource('/api/register');
 });
@@ -126,6 +125,7 @@ module.controller('ShoppingController', function (cart, saleDAO, $sessionStorage
         
         
        cart.setCustomer($sessionStorage.customer);
+       
        saleDAO.save(cart);
        delete $sessionStorage.cart;
        $window.location.href = "thankyou.html";
@@ -160,6 +160,7 @@ this.allProducts = function () {
 
 module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window ) {
     this.registerCustomer = function (customer) {
+       // registerDAO.
         registerDAO.save(null, customer,
         // success callback
        function () {
