@@ -42,8 +42,22 @@ Vagrant.configure("2") do |config|
     custwebserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 
 	custwebserver.vm.provision "shell", path: "user-interface.sh"
+	
  end 
 
+
+	config.vm.define "adminwebserver" do |adminwebserver|
+
+		adminwebserver.vm.hostname = "adminwebserver"
+		
+		adminwebserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
+	
+		adminwebserver.vm.network "private_network", ip: "192.168.2.11"
+	
+		adminwebserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
+	
+		adminwebserver.vm.provision "shell", path: "admin-interface.sh"
+	end
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
