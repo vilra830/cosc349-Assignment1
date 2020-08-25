@@ -45,6 +45,8 @@ Vagrant.configure("2") do |config|
 	
  end 
 
+	#Second VM
+
 
 	config.vm.define "adminwebserver" do |adminwebserver|
 
@@ -52,7 +54,7 @@ Vagrant.configure("2") do |config|
 		
 		adminwebserver.vm.network "forwarded_port", guest: 80, host: 8081, host_ip: "127.0.0.1"
 	
-		adminwebserver.vm.network "private_network", ip: "192.168.2.11"
+		adminwebserver.vm.network "private_network", ip: "192.168.2.12"
 	
 		adminwebserver.vm.synced_folder ".", "/vagrant", owner: "vagrant", group: "vagrant", mount_options: ["dmode=775,fmode=777"]
 	
