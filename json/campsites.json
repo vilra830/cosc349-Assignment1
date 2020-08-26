@@ -66,12 +66,6 @@
         "siteType": "cabin",
         "description": "Sleeps 5",
         "pricePerNight": "100.00"
-      },
-      "12": {
-        "number": "123",
-        "siteType": "Tent",
-        "description": "kkkkk",
-        "pricePerNight": "122"
       }
     }
   }

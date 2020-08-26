@@ -7,6 +7,7 @@
  * Created by Rhea VIllafuerte
  */
 session_start();
+
 ?>
 <!DOCTYPE html>
 

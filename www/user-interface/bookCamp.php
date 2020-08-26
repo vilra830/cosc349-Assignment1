@@ -6,6 +6,7 @@
  * Created by Rhea VIllafuerte
  */
 session_start();
+include('htaccess/connect.php');
 ?>
 <!DOCTYPE html>
 
@@ -25,8 +26,8 @@ session_start();
 <main>
     <h2>Book a Camp</h2>
 <?php
-$_SESSION['name'] = $_POST['guestName'];
-$_SESSION['number'] = $_POST['campSite'];
+$name = $_SESSION['name'] = $_POST['guestName'];
+$number = $_SESSION['number'] = $_POST['campSite'];
 $_SESSION['checkIn'] = $_POST['arriveDatepicker'];
 $_SESSION['checkOut'] = $_POST['departDatepicker'];
 
@@ -95,10 +96,12 @@ if (count($messages) !=  0) {
 } else {
 
 
-    array_push($json["bookings"]["booking"], array("number" => $_SESSION['number'], "name" => $_SESSION['name'], "checkin" => ["day" => $date, "month" => $month, "year" => $year]
-    , "checkout" => ["day" => $date1, "month" => $month1, "year" => $year1]));
+    array_push($json["bookings"]["booking"], array("number" => $number, "name" => $name , "checkin" => [$checkin]
+    , "checkout" => [$checkout]));
 
     file_put_contents($file, json_encode($json));
+
+
 
 
     echo "<p><b>Your booking is successful!</b></p>";
@@ -107,8 +110,28 @@ if (count($messages) !=  0) {
     <b>Booking Name: " . $_SESSION['name'] . "</b><br>
     <b>CheckIn: " . $date. "/" .$month. "/" . $year ."<br> CheckOut: " .$date1 ."/" .$month1. "/" .$year1. " </b></p>";
 
-    echo "<p>Please click <a href='index.php'>here</a> to go back to Homepage</p>";
 
+    $db_host = '192.168.2.13';
+    $db_name = 'fvision';
+    $db_user = 'webuser';
+    $db_passwd = 'admin';
+
+    //$pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
+   // $pdo = new PDO($pdo_dsn, $db_user, $db_passwd);
+
+   $conn = new mysqli($db_host, $db_user, $db_passwd, $db_name);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $query = "INSERT INTO bookings(bookingNumber, checkin , checkout, guestName)VALUES('$number','$checkin','$checkout','$name')";
+
+    if($conn->query($query) === TRUE) {
+        echo "<p>Please click <a href='index.php'>here</a> to go back to Homepage</p>";
+
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
 }
 
 
