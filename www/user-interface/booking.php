@@ -102,7 +102,7 @@ session_start();
 
         while($row=$result->fetch_assoc()) //mysql_fetch_array($sql)
         {
-            $number=$row['bookingNumber'];
+            $number=$row['campNumber'];
             $name=$row['guestName'];
             $checkin=$row['checkin'];
             $checkout=$row['checkout'];

@@ -28,6 +28,7 @@ session_start();
 <?php
 $number = $_POST["bookedCamp"];
 
+
 $sql = "DELETE FROM bookings WHERE bookingNumber='$number'";
 
 if ($conn->query($sql) === TRUE) {

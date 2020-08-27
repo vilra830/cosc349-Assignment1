@@ -98,7 +98,7 @@ if (count($messages) !=  0) {
     <b>CheckIn: " . $date. "/" .$month. "/" . $year ."<br> CheckOut: " .$date1 ."/" .$month1. "/" .$year1. " </b></p>";
 
 
-    $query = "INSERT INTO bookings(bookingNumber, checkin , checkout, guestName)VALUES('$number','$checkin','$checkout','$name')";
+    $query = "INSERT INTO bookings(campNumber, checkin , checkout, guestName)VALUES('$number','$checkin','$checkout','$name')";
 
     if($conn->query($query) === TRUE) {
         echo "<p>Please click <a href='index.php'>here</a> to go back to Homepage</p>";

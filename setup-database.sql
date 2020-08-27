@@ -1,9 +1,10 @@
 CREATE TABLE bookings (
-	bookingNumber VARCHAR(7) ,
+	bookingNumber int NOT NULL AUTO_INCREMENT,
+	campNumber VARCHAR (3),
 	checkin DATE,
 	checkout DATE,
 	guestName VARCHAR (50) NOT NULL,
-	PRIMARY KEY (bookingNumber,checkin,checkout)
+	PRIMARY KEY (bookingNumber)
 	);
 
 CREATE TABLE campsites (

@@ -38,7 +38,7 @@ session_start();
                     or die  ($conn->error);
                     while ($row = $result->fetch_assoc()) //mysql_fetch_array($sql)
                     {
-                        echo "<option value='" . $row["bookingNumber"]."'> Booking Number :" . $row["bookingNumber"] . "  Name: " . $row["guestName"] . "</option>";
+                        echo "<option value='" . $row["bookingNumber"]."'> Booking Number: " . $row["bookingNumber"] . "   Campsite Number: ". $row["campNumber"]. "   Name: " . $row["guestName"] . "</option>";
                     }
                     echo "</select>";
                     ?>
