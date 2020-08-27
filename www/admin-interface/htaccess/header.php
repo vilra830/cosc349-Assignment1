@@ -15,7 +15,7 @@
     <nav class="mainNav">
         <ul>
             <?php
-            $navLinks = array("Home" => "index.php", "Book A Site"=> "booking.php", "Contact" => "contact.php", "Campsites" => "campsites.php");
+            $navLinks = array("Home" => "admin.php");
             foreach ($navLinks as $key => $val){
                 if($val === $currentPage) {
                     echo "<li>$key</li>";

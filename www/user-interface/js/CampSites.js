@@ -14,8 +14,8 @@ var CampSites = (function () {
         var outStr = "";
 
         //get the campsites information and build the list for display / selection
-        $.when($.getJSON("./json/campsites.json", function (data) {
-                items = data.campSites.site;
+        $.when($.getJSON("json/results.json", function (data) {
+                items = data.campsites.site;
                 $.each(items, function (key, value) {
                     $("#accommTypeLst").append("<li id='" + value.number + "'>" + value.number + " : " +
                         value.siteType + " : " +

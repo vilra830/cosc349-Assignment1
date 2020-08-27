@@ -15,9 +15,11 @@ session_start();
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <?php
-    $scriptList = array ('js/jquery-3.4.1.min.js');
+    $scriptList = array('js/jquery-3.4.1.min.js');
     include('htaccess/header.php');
     include("htaccess/validateFunctions.php");
+    include('htaccess/connect.php');
+
 
     ?>
 </head>
@@ -25,17 +27,18 @@ session_start();
 
     <h2>Administration Page</h2>
     <div class="admin">
-        <form id="cancelBooking" action="cancelBooking.php" method = "POST" novalidate>
+        <form id="cancelBooking" action="cancelBooking.php" method="POST" novalidate>
             <fieldset>
-                <legend> Cancel Booking </legend>
+                <legend> Cancel Booking</legend>
                 <p>
                     <label for=bookings> Bookings: </label>
                     <?php
-                    echo "<select id='bookedCamp' name='bookedCamp'>";
-                    $json_input = file_get_contents("json/bookings.json");
-                    $json = json_decode($json_input,true);
-                    foreach ($json["bookings"]["booking"] as $key) {
-                        echo "<option value='" . $key["number"] . $key["name"]."'> Booking Number: " . $key["number"] . " Name: " . $key["name"] . "</option>";
+                    $query = "SELECT * FROM bookings";
+                    echo "<select id='bookedCamp' name='bookedCamp'>";                    $result = $conn->query($query)
+                    or die  ($conn->error);
+                    while ($row = $result->fetch_assoc()) //mysql_fetch_array($sql)
+                    {
+                        echo "<option value='" . $row["bookingNumber"]."'> Booking Number: " . $row["bookingNumber"] . "   Campsite Number: ". $row["campNumber"]. "   Name: " . $row["guestName"] . "</option>";
                     }
                     echo "</select>";
                     ?>
@@ -48,34 +51,9 @@ session_start();
         </form>
     </div>
     <div class="admin">
-        <form id="deleteCampsite" action="deleteCampsite.php" method = "POST" novalidate>
+        <form id="addCampsite" action="addCampsite.php" method="POST" novalidate>
             <fieldset>
-                <legend> Delete Campsites </legend>
-                <p>
-                    <label for=campsites> Campsites: </label>
-                    <?php
-                    echo "<select id='campsites' name='campsites'>";
-                    $json_input = file_get_contents("json/campsites.json");
-                    $json = json_decode($json_input,true);
-                    var_dump($json);
-                    foreach ($json["campSites"]["site"] as $key){
-                        echo "<option value='".$key["number"]."'> Campsite Number: " .$key["number"] ."</option>";
-                    }
-                    echo "</select>";
-                    ?>
-                </p>
-
-                <p>
-                    <input type="submit" class="adminButtons" name="deleteCampsite" value="Delete Campsite">
-                </p>
-            </fieldset>
-
-        </form>
-    </div>
-    <div class="admin">
-        <form id="addCampsite" action="addCampsite.php" method = "POST" novalidate>
-            <fieldset>
-                <legend> Add a Campsite </legend>
+                <legend> Add a Campsite</legend>
                 <p>
                     <label for="number"> Campsite Number: </label>
                     <input type="text" name="number" placeholder="Campsite Number" <?php
@@ -102,7 +80,7 @@ session_start();
                 </p>
                 <p>
                     <label for="description"> Description: </label>
-                    <textarea rows="4" cols="50"  type="text" name="description" placeholder="Description" <?php
+                    <textarea rows="4" cols="50" type="text" name="description" placeholder="Description" <?php
                     if (isset($_SESSION['description'])) {
                         $description = $_SESSION['description'];
                         echo "value='$description'";
@@ -128,24 +106,29 @@ session_start();
         </form>
     </div>
     <div class="admin">
-        <form id="editCampsite" action="editCampsite.php" method = "POST" novalidate>
+        <form id="editCampsite" action="editCampsite.php" method="POST" novalidate>
             <fieldset>
-                <legend> Edit a Campsite </legend>
+                <legend> Edit a Campsite</legend>
                 <p>
-                    <label for=number> Campsite Number: </label> <?php
+                    <label for=number> Campsite Number: </label>
+                    <?php
+
+                    $query = "SELECT * FROM campsites WHERE NOT EXISTS (SELECT * FROM bookings WHERE campsites.campNumber = bookings.bookingNumber)";
                     echo "<select id='campsites' name='number'>";
-                    $json_input = file_get_contents("json/campsites.json");
-                    $json = json_decode($json_input,true);
-                    var_dump($json);
-                    foreach ($json["campSites"]["site"] as $key){
-                        echo "<option value='".$key["number"]."'> Campsite Number: " .$key["number"]. "</option>";
+                    $result = $conn->query($query)
+                    or die  ($conn->error);
+
+                    while ($row = $result->fetch_assoc()) //mysql_fetch_array($sql)
+                    {
+                        echo "<option value='" . $row["campNumber"] . "'>" . "Campsite Number :" . $row["campNumber"] . "</option>";
                     }
                     echo "</select>";
                     ?>
+
                 </p>
                 <p>
                     <label for=newNumber> Number: </label>
-                    <input type="text"  name="newNumber" placeholder="New number"  <?php
+                    <input type="text" name="newNumber" placeholder="New number" <?php
                     if (isset($_SESSION['newNumber'])) {
                         $newNumber = $_SESSION['newNumber'];
                         echo "value='$newNumber'";
@@ -169,7 +152,7 @@ session_start();
                 </p>
                 <p>
                     <label for=description> Description: </label>
-                    <textarea rows="4" cols="50"  type="text" name="description" placeholder="Description" <?php
+                    <textarea rows="4" cols="50" type="text" name="description" placeholder="Description" <?php
                     if (isset($_SESSION['description'])) {
                         $description = $_SESSION['description'];
                         echo "value='$description'";

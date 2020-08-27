@@ -106,7 +106,7 @@ var CampBooking = (function () {
         $("#makeBooking").mouseover(showAvailable);
 
         //get the data for the existing bookings and assign to global
-        $.getJSON("json/bookings.json", function (data) {
+        $.getJSON("json/bookings1.json", function (data) {
             bookings = data.bookings.booking;
         });
     };

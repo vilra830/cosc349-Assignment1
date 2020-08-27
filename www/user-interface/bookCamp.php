@@ -6,6 +6,7 @@
  * Created by Rhea VIllafuerte
  */
 session_start();
+include('htaccess/connect.php');
 ?>
 <!DOCTYPE html>
 
@@ -25,8 +26,8 @@ session_start();
 <main>
     <h2>Book a Camp</h2>
 <?php
-$_SESSION['name'] = $_POST['guestName'];
-$_SESSION['number'] = $_POST['campSite'];
+$name = $_SESSION['name'] = $_POST['guestName'];
+$number = $_SESSION['number'] = $_POST['campSite'];
 $_SESSION['checkIn'] = $_POST['arriveDatepicker'];
 $_SESSION['checkOut'] = $_POST['departDatepicker'];
 
@@ -48,17 +49,12 @@ $checkout = date('Y-m-d',$timestamp1);
 $datee= new DateTime('today');
 $dateNow=$datee->format('Y-m-d');
 
-
-$file = "json/bookings.json";
-$json_input = file_get_contents($file);
-$json = json_decode($json_input,true);
-
 $messages = array();
 $formOk = true;
 
 if(isset($_POST['book'])){
     $formOk = true;
-    if(isEmpty($_SESSION['name'])) {
+    if(isEmpty($_SESSION['number'])) {
         $formOk = false;
         array_push($messages , "Please select a campsite");
 
@@ -95,20 +91,21 @@ if (count($messages) !=  0) {
 } else {
 
 
-    array_push($json["bookings"]["booking"], array("number" => $_SESSION['number'], "name" => $_SESSION['name'], "checkin" => ["day" => $date, "month" => $month, "year" => $year]
-    , "checkout" => ["day" => $date1, "month" => $month1, "year" => $year1]));
-
-    file_put_contents($file, json_encode($json));
-
-
     echo "<p><b>Your booking is successful!</b></p>";
     echo "<p><b>These are your Booking Details:</b><br>
     <b>Booking Number: " . $_SESSION['number'] . "</b><br>
     <b>Booking Name: " . $_SESSION['name'] . "</b><br>
     <b>CheckIn: " . $date. "/" .$month. "/" . $year ."<br> CheckOut: " .$date1 ."/" .$month1. "/" .$year1. " </b></p>";
 
-    echo "<p>Please click <a href='index.php'>here</a> to go back to Homepage</p>";
 
+    $query = "INSERT INTO bookings(campNumber, checkin , checkout, guestName)VALUES('$number','$checkin','$checkout','$name')";
+
+    if($conn->query($query) === TRUE) {
+        echo "<p>Please click <a href='index.php'>here</a> to go back to Homepage</p>";
+
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
 }
 
 

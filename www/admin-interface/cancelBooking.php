@@ -20,6 +20,7 @@ session_start();
         <?php
         $scriptList = array ('js/jquery-3.4.1.min.js');
         include('htaccess/header.php');
+        include('htaccess/connect.php');
         ?>
     </head>
     <main>
@@ -27,23 +28,17 @@ session_start();
 <?php
 $number = $_POST["bookedCamp"];
 
-$file = "json/bookings.json";
-$json_input = file_get_contents($file);
-$json = json_decode($json_input,true);
 
+$sql = "DELETE FROM bookings WHERE bookingNumber='$number'";
 
-foreach($json["bookings"]["booking"] as $elementKey => $element) {
-    if ($element["number"] . $element["name"] == $number) {
-        unset($json["bookings"]["booking"][$elementKey]);
-    }
+if ($conn->query($sql) === TRUE) {
+
+    echo "<p> Booking No."."$number"." has been canceled! </p>";
+    echo "<p>Click <a href='admin.php'> here </a> to go back to admin page</p>";
+
+} else {
+    echo "Error canceling booking. " . $conn->error;
 }
-
-file_put_contents($file, json_encode($json));
-
-echo "<p> Booking No."."$number"." has been canceled! </p>";
-echo "<p>Click <a href='admin.php'> here </a> to go back to admin page</p>";
-
-
 ?>
 </main>
 <?php include("htaccess/footer.php"); ?>
