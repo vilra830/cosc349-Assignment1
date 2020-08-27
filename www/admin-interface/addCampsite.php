@@ -37,44 +37,46 @@ $siteType = $_SESSION['siteType'] = $_POST['siteType'];
 $description = $_SESSION['description'] = $_POST['description'];
 $price = $_SESSION['price'] = $_POST['price'];
 
-$a = 0;
-$file = "json/campsites.json";
-$json_input = file_get_contents($file);
-$json = json_decode($json_input, true);
-foreach ($json["campSites"]["site"] as $key) {
-    if ($key["number"] == $_SESSION['number']) {
-        $a++;
-        }
-    }
 
 
 $messages = array();
 $formOk = true;
-if(isset($_POST['addCampsite'])){
+if(isset($_POST['addCampsite'])) {
     $formOk = true;
-    if(isEmpty($_POST['number'])) {
+    if (isEmpty($_POST['number'])) {
 
         $formOk = false;
-        array_push($messages , "Please enter a number");
-    }    if(isEmpty($_POST['description'])) {
-
-    $formOk = false;
-    array_push($messages , "Please enter a description");
-    } if (!isDigits($_POST['number']) || !checkLength($_POST['number'], 3)) {
-        $formOk = false;
-        array_push($messages,"Campsite number must be  a number and exactly 3 digits long");
-    }  if(isEmpty($_POST['price'])) {
-        $formOk = false;
-        array_push($messages , "Please enter a price");
-    }  if (!isDigits($_POST['price'])) {
-        $formOk = false;
-        array_push($messages,"Price must be a number ");
-    } if ($a > 0 ){
-        $formOk = false;
-        array_push($messages, "Campsite number already exists - No duplication");
+        array_push($messages, "Please enter a number");
     }
+    if (isEmpty($_POST['description'])) {
 
+        $formOk = false;
+        array_push($messages, "Please enter a description");
+    }
+    if (!isDigits($_POST['number']) || !checkLength($_POST['number'], 3)) {
+        $formOk = false;
+        array_push($messages, "Campsite number must be  a number and exactly 3 digits long");
+    }
+    if (isEmpty($_POST['price'])) {
+        $formOk = false;
+        array_push($messages, "Please enter a price");
+    }
+    if (!isDigits($_POST['price'])) {
+        $formOk = false;
+        array_push($messages, "Price must be a number ");
+    }
+    $query = "SELECT * FROM campsites";
+    $result = $conn->query($query)
+    or die  ($conn->error);
 
+    while ($row = $result->fetch_assoc()) //mysql_fetch_array($sql)
+    {
+        if ($number == $row["campNumber"]) {
+
+            $formOk = false;
+            array_push($messages, "Campsite number already exists - No duplication");
+        }
+    }
 }
 if (count($messages) !=  0) {
     echo "<div><ul id='errors'><b>Errors:</b>";

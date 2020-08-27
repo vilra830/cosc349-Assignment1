@@ -3,7 +3,7 @@ CREATE TABLE bookings (
 	checkin DATE,
 	checkout DATE,
 	guestName VARCHAR (50) NOT NULL,
-	PRIMARY KEY (bookingNumber)
+	PRIMARY KEY (bookingNumber,checkin,checkout)
 	);
 
 CREATE TABLE campsites (

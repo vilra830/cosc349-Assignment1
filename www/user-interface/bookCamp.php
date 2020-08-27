@@ -49,17 +49,12 @@ $checkout = date('Y-m-d',$timestamp1);
 $datee= new DateTime('today');
 $dateNow=$datee->format('Y-m-d');
 
-
-$file = "json/bookings.json";
-$json_input = file_get_contents($file);
-$json = json_decode($json_input,true);
-
 $messages = array();
 $formOk = true;
 
 if(isset($_POST['book'])){
     $formOk = true;
-    if(isEmpty($_SESSION['name'])) {
+    if(isEmpty($_SESSION['number'])) {
         $formOk = false;
         array_push($messages , "Please select a campsite");
 
@@ -96,33 +91,12 @@ if (count($messages) !=  0) {
 } else {
 
 
-    array_push($json["bookings"]["booking"], array("number" => $number, "name" => $name , "checkin" => [$checkin]
-    , "checkout" => [$checkout]));
-
-    file_put_contents($file, json_encode($json));
-
-
-
-
     echo "<p><b>Your booking is successful!</b></p>";
     echo "<p><b>These are your Booking Details:</b><br>
     <b>Booking Number: " . $_SESSION['number'] . "</b><br>
     <b>Booking Name: " . $_SESSION['name'] . "</b><br>
     <b>CheckIn: " . $date. "/" .$month. "/" . $year ."<br> CheckOut: " .$date1 ."/" .$month1. "/" .$year1. " </b></p>";
 
-
-    $db_host = '192.168.2.13';
-    $db_name = 'fvision';
-    $db_user = 'webuser';
-    $db_passwd = 'admin';
-
-    //$pdo_dsn = "mysql:host=$db_host;dbname=$db_name";
-   // $pdo = new PDO($pdo_dsn, $db_user, $db_passwd);
-
-   $conn = new mysqli($db_host, $db_user, $db_passwd, $db_name);
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
 
     $query = "INSERT INTO bookings(bookingNumber, checkin , checkout, guestName)VALUES('$number','$checkin','$checkout','$name')";
 
