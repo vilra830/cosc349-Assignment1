@@ -9,6 +9,8 @@
 session_start();
 
 ?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -21,7 +23,7 @@ session_start();
     $scriptList = array ('js/jquery-3.4.1.min.js','js/CampSites.js','js/CampBooking.js');
     include('htaccess/header.php');
     include("htaccess/validateFunctions.php");
-
+    include('htaccess/connect.php');
     ?>
 </head>
 
@@ -30,10 +32,10 @@ session_start();
 <?php
 
 
-$_SESSION['number'] = $_POST['number'];
-$_SESSION['siteType'] = $_POST['siteType'];
-$_SESSION['description'] = $_POST['description'];
-$_SESSION['price'] = $_POST['price'];
+$number = $_SESSION['number'] = $_POST['number'];
+$siteType = $_SESSION['siteType'] = $_POST['siteType'];
+$description = $_SESSION['description'] = $_POST['description'];
+$price = $_SESSION['price'] = $_POST['price'];
 
 $a = 0;
 $file = "json/campsites.json";
@@ -81,19 +83,25 @@ if (count($messages) !=  0) {
     }
     echo "</ul></div>";
 
+    echo "<p>Please click <a href='admin.php'>here</a> to go back to admin page</p>";
+
 }else {
-
-
-    array_push($json["campSites"]["site"], array("number" => $_SESSION['number'], "siteType" => $_SESSION['siteType'], "description" => $_SESSION['description'], "pricePerNight" => $_SESSION['price']));
-    file_put_contents($file, json_encode($json));
-
 
     echo "<p><b>These are your New Campsite Details:</b><br>
     <b>Campsite Number: </b>" . $_SESSION['number'] . "<br>
     <b>SiteType: </b>" . $_SESSION['siteType'] . "<br>
     <b>Description: </b>" . $_SESSION['description'] . "<br>
     <b>Price: </b>" . $_SESSION['price'] . "</p>";
-    echo "<p>Please click <a href='admin.php'>here</a> to go back to admin page</p>";
+
+
+     $query = "INSERT INTO campsites (campNumber, siteType , description, pricePerNight)VALUES('$number','$siteType','$description','$price')";
+
+    if($conn->query($query) === TRUE) {
+        echo "<p>Please click <a href='admin.php'>here</a> to go back to admin page</p>";
+
+    } else {
+        echo "Error: " . $query . "<br>" . $conn->error;
+    }
 
     session_destroy();
 
