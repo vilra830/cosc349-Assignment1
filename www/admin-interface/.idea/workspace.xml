@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1de21395-2c78-40a9-a322-e7dc89c704ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json/POI.geojson" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json/bookings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json/campsites.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json/galleryDisplayOnly.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../json/reviews.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../new.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../setup-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../setup-database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/bookCamp.php" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/bookCamp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/htaccess/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/htaccess/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/js/CampBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/js/CampBooking.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/js/CampSites.js" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/js/CampSites.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/json.php" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/json.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/json/bookings1.json" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/json/bookings1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../user-interface/json/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/../user-interface/json/results.json" afterDir="false" />
-    </list>
+    <list default="true" id="1de21395-2c78-40a9-a322-e7dc89c704ab" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addCampsite.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="594">
               <caret line="73" column="1" lean-forward="true" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/htaccess/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -120,6 +109,7 @@
         <option value="$PROJECT_DIR$/cancelBooking.php" />
         <option value="$PROJECT_DIR$/admin.php" />
         <option value="$PROJECT_DIR$/addCampsite.php" />
+        <option value="$PROJECT_DIR$/htaccess/header.php" />
       </list>
     </option>
   </component>
@@ -141,6 +131,11 @@
             <path>
               <item name="admin-interface" type="b2602c69:ProjectViewProjectNode" />
               <item name="admin-interface" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="admin-interface" type="b2602c69:ProjectViewProjectNode" />
+              <item name="admin-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="htaccess" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -189,7 +184,7 @@
       <workItem from="1570739139887" duration="114000" />
       <workItem from="1598247144931" duration="4453000" />
       <workItem from="1598509949599" duration="9426000" />
-      <workItem from="1598521206059" duration="141000" />
+      <workItem from="1598521206059" duration="343000" />
     </task>
     <task id="LOCAL-00001" summary="Added all assignmentTwo files">
       <created>1570614031445</created>
@@ -209,7 +204,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17410000" />
+    <option name="totallyTimeSpent" value="17612000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -376,6 +371,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="73" column="1" lean-forward="true" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/htaccess/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
         </state>
       </provider>
     </entry>
