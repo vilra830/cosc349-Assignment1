@@ -93,7 +93,7 @@ if (count($messages) !=  0) {
 
     echo "<p><b>Your booking is successful!</b></p>";
     echo "<p><b>These are your Booking Details:</b><br>
-    <b>Booking Number: " . $_SESSION['number'] . "</b><br>
+    <b>Camp Number: " . $_SESSION['number'] . "</b><br>
     <b>Booking Name: " . $_SESSION['name'] . "</b><br>
     <b>CheckIn: " . $date. "/" .$month. "/" . $year ."<br> CheckOut: " .$date1 ."/" .$month1. "/" .$year1. " </b></p>";
 

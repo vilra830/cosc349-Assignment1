@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0962dad-9f55-418c-9949-88e01bf840bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/setup-database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/setup-database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/admin-interface/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/admin-interface/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/admin-interface/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/admin-interface/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/admin-interface/cancelBooking.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/admin-interface/cancelBooking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/user-interface/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/www/user-interface/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/user-interface/bookCamp.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/user-interface/bookCamp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/user-interface/booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/www/user-interface/booking.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/user-interface/json/bookings1.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/user-interface/json/bookings1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/user-interface/json/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/user-interface/json/results.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +24,13 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/user-interface/bookCamp.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -39,11 +38,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/admin-interface/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" column="167" selection-start-line="40" selection-start-column="167" selection-end-line="40" selection-end-column="167" />
+            <state relative-caret-position="85">
+              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -83,6 +82,7 @@
         <option value="$PROJECT_DIR$/www/user-interface/json/bookings1.json" />
         <option value="$PROJECT_DIR$/www/user-interface/json/results.json" />
         <option value="$PROJECT_DIR$/www/admin-interface/admin.php" />
+        <option value="$PROJECT_DIR$/www/user-interface/bookCamp.php" />
       </list>
     </option>
   </component>
@@ -96,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -118,12 +118,6 @@
               <item name="cosc349-Assignment1" type="b2602c69:ProjectViewProjectNode" />
               <item name="cosc349-Assignment1" type="462c0819:PsiDirectoryNode" />
               <item name="www" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cosc349-Assignment1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cosc349-Assignment1" type="462c0819:PsiDirectoryNode" />
-              <item name="www" type="462c0819:PsiDirectoryNode" />
-              <item name="admin-interface" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -161,16 +155,15 @@
       <option name="presentableId" value="Default" />
       <updated>1598503385612</updated>
       <workItem from="1598503387116" duration="2006000" />
-      <workItem from="1598523654283" duration="127000" />
+      <workItem from="1598523654283" duration="1854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2133000" />
+    <option name="totallyTimeSpent" value="3860000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="1" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2549234" />
@@ -239,16 +232,20 @@
     <entry file="file://$PROJECT_DIR$/www/user-interface/json/results.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/user-interface/bookCamp.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/admin-interface/addCampsite.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/www/admin-interface/admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="167" selection-start-line="40" selection-start-column="167" selection-end-line="40" selection-end-column="167" />
+        <state relative-caret-position="85">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/user-interface/bookCamp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
         </state>
       </provider>
     </entry>
