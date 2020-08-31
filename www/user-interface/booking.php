@@ -3,7 +3,8 @@ session_start();
 
 ?>
 <!--This file allows customers to make a booking
- -- It also validates inputs - It is using Nick's CampBooking.js file to validate its inputs.
+ -- It also validates inputs - It is using Nick's CampBooking.js file to validate its inputs. This also fetches data
+ from sql file and converts them to json and saved to json file , Credits to : https://gist.github.com/recked/7329961
  Created by Rhea VIllafuerte-->
 <!DOCTYPE html>
 

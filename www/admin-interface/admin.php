@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is the administration page of Escape Holiday Park. It has 4 forms which allow staff to
- * cancel booking, delete , edit or add campsite.
+ * cancel booking,  edit or add campsite.
  */
 session_start();
 ?>
