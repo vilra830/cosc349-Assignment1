@@ -21,3 +21,7 @@ In this project we have created a web-based campsite booking system for the fict
 
 <br>To access adminwebserver for administration:
 <br>http://127.0.0.1:8081/admin.php
+
+<br>To connect to the database: Run vagrant ssh dbserver
+<br>Once on the shell : Run mysql -u root -p. Password is insecure_mysqlroot_pw
+<br>Once on the database shell, type <b> Use fvision</b> which is the name of the database
